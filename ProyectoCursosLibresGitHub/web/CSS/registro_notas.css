@@ -1,0 +1,107 @@
+body{
+    background-color: #67bbd6;
+    margin: 0;
+}
+
+#wrapper {
+    font-family: sans-serif;
+    font-size: 12pt;
+    overflow: hidden;
+}
+
+#menuHeader{
+    text-align: center;
+    color: white;
+    width: 75pt;
+    float: left;
+}
+
+#logoutHeader{
+    text-align: center;
+    padding: 3px;
+    margin: 2px;
+    color: black;
+    width: 75pt;
+    float: right;
+}
+
+header {
+    background-color: white;
+    border-bottom: 2px solid black;
+}
+
+#contents{
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid gainsboro;
+    border-radius: 1em;
+    padding: 30px 40px 40px 40px;
+    margin: 50px 400px;
+    background-color: rgba(255,255,255,0.99);
+}
+
+#contents form{
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+}
+
+.error {
+    color: crimson;
+    font-weight: bold;
+}
+
+.formulario  {
+    border: 1px solid gray;
+}
+
+.formulario  td {
+    padding: 4px 16px;
+}
+
+.formulario .etiqueta {
+    text-align: right;
+}
+
+
+.tablaEstudiantes caption{
+    background-color: #505453;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    color: white;
+}
+
+.tablaEstudiantes {
+    border: none;
+    border-bottom: 2px solid darkslategrey;
+    border-collapse: collapse;
+    font-size: smaller;
+}
+
+.tablaEstudiantes th,
+.tablaEstudiantes td {
+    border: none;
+    padding: 10px 25px 10px 25px;
+}
+
+.tablaEstudiantes tbody tr:nth-child(odd) {
+    background-color: #ededeb;
+}
+
+.tablaEstudiantes th {
+    background-color: #505453;
+    border: none;
+    color: white;
+}
+
+.tablaEstudiantes td {
+}
+
+
+
