@@ -1,6 +1,6 @@
 package modelo.db;
 
-//import com.mysql.cj.jdbc.MysqlDataSource;
+import com.mysql.cj.jdbc.MysqlDataSource;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -11,7 +11,7 @@ import java.util.Properties;
  * @author Georges Alfaro S.
  * @version 1.0.2
  */
-/*public class Database extends MysqlDataSource {
+public class Database extends MysqlDataSource {
 
     private Database() throws IOException {
         this.configuration = new Properties();
@@ -46,4 +46,4 @@ import java.util.Properties;
     private static final String CONFIGURATION_PATH = "db.properties";
     private static Database instance = null;
     private Properties configuration = null;
-}*/
+}
