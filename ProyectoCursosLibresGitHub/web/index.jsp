@@ -7,6 +7,8 @@
         <link href="CSS/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <jsp:useBean id="cursos" class="cursosLibres.modelo.ConjuntoCursos" scope="application">
+        </jsp:useBean>
         <div id="wrapper">
             <header style="overflow: hidden;">
                 <nav id="menuHeader">
@@ -73,69 +75,7 @@
                         </tbody>
                     </table>
                     <div class="d2columnas">
-                        <section id="secc1">
-                            <table class="tablaCursos">
-                                <caption><u>CURSOS</u></caption>
-                                <thead>
-                                    <tr>
-                                        <th>&nbsp;</th>
-                                        <th>ID</th>
-                                        <th>Nombre</th>
-                                        <th>Temática</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>2468</td>
-                                        <td>Soporte Tecnico</td>
-                                        <td>Ingenieria en Sistemas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>3932</td>
-                                        <td>Estructuras de Datos</td>
-                                        <td>Ingenieria en Sistemas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>2255</td>
-                                        <td>Programacion IV</td>
-                                        <td>Ingenieria en Sistemas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>1501</td>
-                                        <td>Contabilidad</td>
-                                        <td>Administracion de Empresas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>4425</td>
-                                        <td>Finanzas</td>
-                                        <td>Administracion de Empresas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>9402</td>
-                                        <td>Estadistica</td>
-                                        <td>Matematicas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>2311</td>
-                                        <td>Metodos de Investigacion</td>
-                                        <td>Ingenieria en Sistemas</td>
-                                    </tr>
-                                    <tr>
-                                        <td>8</td>
-                                        <td>6224</td>
-                                        <td>Programacion II</td>
-                                        <td>Ingenieria en Sistemas</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
+                        ${cursos.tabla}
                     </div>
                 </form>
             </div>
