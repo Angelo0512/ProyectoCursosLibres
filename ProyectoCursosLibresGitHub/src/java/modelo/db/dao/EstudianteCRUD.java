@@ -7,7 +7,7 @@ import modelo.db.AbstractCRUD;
  * @authores Luis Restrepo V. Angelo Calvo M. Daniel Sánchez S.
  * @version 1.0
  */
-public class Area_tematicaCRUD extends AbstractCRUD {
+public class EstudianteCRUD extends AbstractCRUD {
 
     @Override
     public String getListAllCmd() {
@@ -35,18 +35,13 @@ public class Area_tematicaCRUD extends AbstractCRUD {
     }
 
     protected static final String CMD_LIST
-            = "SELECT id_area, descripcion FROM area_tematica "
-            + "ORDER BY id_area, descripcion; ";
+            = "SELECT id_estudiante, usuario_id, apellido1, apellido2, nombre, telefono, e_mail FROM estudiante ORDER BY apellido1; ";
     protected static final String CMD_ADD
-            = "INSERT INTO area_tematica (id_area, descripcion) "
-            + "VALUES (?, ?); ";
+            = "INSERT INTO estudiante (id_estudiante, usuario_id, apellido1, apellido2, nombre, telefono, e_mail) VALUES (?, ?, ?, ?, ?, ?, ?); ";
     protected static final String CMD_RETRIEVE
-            = "SELECT id_area, descripcion FROM area_tematica "
-            + "WHERE id_area = ?; ";
+            = "SELECT id_estudiante, usuario_id, apellido1, apellido2, nombre, telefono, e_mail FROM estudiante WHERE id_estudiante=?; ";
     protected static final String CMD_UPDATE
-            = "UPDATE area_tematica SET descripcion = ? "
-            + "WHERE id_area = ?; ";
+            = "UPDATE estudiante SET apellido1=?, apellido2=?, nombre=?, telefono=?, e_mail=? WHERE id_estudiante=?; ";
     protected static final String CMD_DELETE
-            = "DELETE FROM area_tematica "
-            + "WHERE id_area = ?; ";
+            = "DELETE FROM estudiante WHERE id_estudiante=?; ";
 }

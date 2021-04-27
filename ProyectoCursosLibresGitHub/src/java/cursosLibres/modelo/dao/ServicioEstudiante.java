@@ -1,92 +1,62 @@
 package cursosLibres.modelo.dao;
 
-//import cursosLibres.datos.BaseDatos;
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import cursosLibres.modelo.ConjuntoEstudiantes;
 import cursosLibres.modelo.Estudiante;
+import java.io.IOException;
+import java.sql.SQLException;
+import java.text.ParseException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-public class ServicioEstudiante {
+@WebServlet(name = "ServicioEstudiante", urlPatterns = {"/ServicioEstudiante"})
+public class ServicioEstudiante extends HttpServlet {
 
-    public Optional<Estudiante> obtenerEstudiante(String id) {
-        Optional<Estudiante> r = Optional.empty();
-        try (Connection cnx = obtenerConexion();
-                PreparedStatement stm = cnx.prepareStatement(IMEC_Estudiante.CONSULTAR.obtenerComando());) {
-            stm.clearParameters();
-            stm.setString(1, id);
-            try (ResultSet rs = stm.executeQuery()) {
-                if (rs.next()) {
-                    r = Optional.of(new Estudiante(
-                            rs.getInt("id_estudiante"),
-                            rs.getString("usuario_id"),
-                            rs.getString("apellido1"),
-                            rs.getString("apellido2"),
-                            rs.getString("nombre"),
-                            rs.getString("telefono"),
-                            rs.getString("e_mail")
-                    ));
-                }
-            }
-        } catch (IOException
-                | ClassNotFoundException
-                | IllegalAccessException
-                | InstantiationException
-                | SQLException ex) {
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+
+        System.out.println("Servlet ServicioEstudiante..");
+
+        try {
+            Estudiante e = new Estudiante(
+                    Integer.parseInt(request.getParameter("id")),
+                    request.getParameter("usuario_id"),
+                    request.getParameter("apellido1"),
+                    request.getParameter("apellido2"),
+                    request.getParameter("nombre"),
+                    request.getParameter("telefono"),
+                    request.getParameter("email"));
+
+            ConjuntoEstudiantes estudiantes
+                    = (ConjuntoEstudiantes) getServletContext().getAttribute("estudiantes");
+            estudiantes.agregar(e);
+            System.out.println(estudiantes);
+
+            response.sendRedirect("index.jsp");
+
+        } catch (IOException | NumberFormatException | SQLException  ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
+            response.sendRedirect("error.jsp");
         }
-        return r;
     }
 
-    public List<Estudiante> obtenerListaEstudiantes() {
-        List<Estudiante> r = new ArrayList<>();
-        try (Connection cnx = obtenerConexion();
-                Statement stm = cnx.createStatement();
-                ResultSet rs = stm.executeQuery(IMEC_Estudiante.LISTAR.obtenerComando())) {
-            while (rs.next()) {
-                Estudiante e = new Estudiante(
-                        rs.getInt("id_estudiante"),
-                        rs.getString("usuario_id"),
-                        rs.getString("apellido1"),
-                        rs.getString("apellido2"),
-                        rs.getString("nombre"),
-                        rs.getString("telefono"),
-                        rs.getString("e_mail")
-                );
-                r.add(e);
-            }
-        } catch (IOException
-                | ClassNotFoundException
-                | IllegalAccessException
-                | InstantiationException
-                | SQLException ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-        }
-        return r;
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
-    public Connection obtenerConexion() throws
-            ClassNotFoundException,
-            IllegalAccessException,
-            InstantiationException,
-            IOException,
-            SQLException {
-        //BaseDatos bd = BaseDatos.obtenerInstancia();
-        //Connection cnx = bd.obtenerConexion();
-        return null;
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
     }
 
-    public static void main(String[] args) {
-        ServicioEstudiante se = new ServicioEstudiante();
-        List<Estudiante> estudiantes = se.obtenerListaEstudiantes();
-        int i = 0;
-        for (Estudiante e : estudiantes) {
-            System.out.printf("%4d: %s,%n", ++i, e);
-        }
+    @Override
+    public String getServletInfo() {
+        return "ServicioEstudiante";
     }
 }

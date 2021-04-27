@@ -6,11 +6,6 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Properties;
 
-/**
- *
- * @author Georges Alfaro S.
- * @version 1.0.2
- */
 public class Database extends MysqlDataSource {
 
     private Database() throws IOException {
