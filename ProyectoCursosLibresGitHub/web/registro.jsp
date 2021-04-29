@@ -6,7 +6,7 @@
         <link href="CSS/registro.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <jsp:useBean id="estudiantes" class="cursosLibres.modelo.ConjuntoEstudiantes" scope="application">
+        <jsp:useBean id="estudiantes" class="modelo.beans.ConjuntoEstudiantes" scope="application">
         </jsp:useBean>
         <div id="wrapper">
             <div id="contents">

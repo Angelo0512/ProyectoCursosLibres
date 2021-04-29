@@ -7,7 +7,7 @@
         <link href="CSS/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <jsp:useBean id="cursos" class="cursosLibres.modelo.ConjuntoCursos" scope="application">
+        <jsp:useBean id="cursos" class="modelo.beans.ConjuntoCursos" scope="application">
         </jsp:useBean>
         <div id="wrapper">
             <header style="overflow: hidden;">
@@ -28,7 +28,7 @@
                 </nav>
                 <nav id="menuHeader">
                     <p>
-                        <a href="index.jsp">Estudiantes</a>
+                        <a href="registro.jsp">Estudiantes</a>
                     </p>
                 </nav>
                 <nav id="menuHeader">
