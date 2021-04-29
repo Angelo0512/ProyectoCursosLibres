@@ -55,6 +55,54 @@ public class ConjuntoEstudiantes implements Serializable {
         throw new UnsupportedOperationException();
     }
 
+        @Override
+    public String toString() {
+        StringBuilder r = new StringBuilder();
+        r.append("[\n");
+        List<Estudiante> t = getListaEstudiantes();
+        for (Estudiante c : t) {
+            
+            r.append(String.format("\t%s,%n", c));
+        }
+        r.append("]");
+        return r.toString();
+    }
+
+    public String toStringHTML() {
+        
+        StringBuilder r = new StringBuilder();
+        r.append("\t<table class=\"tablaEstudiante\">\n");
+        r.append("\t\t<caption>ESTUDIANTES</caption>");
+        r.append("\t\t<thead>\n");
+        r.append("\t\t\t<tr>\n");
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Estudiante"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Usuario"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Apellido 1"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Apellido 2"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Nombre"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Telefono"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Email"));
+        r.append("\t\t\t<tr>\n");
+        r.append("\t\t</thead>\n");
+
+        r.append("\t\t<tbody>\n");
+        List<Estudiante> t = getListaEstudiantes();
+        for (Estudiante c : t) {
+            
+            r.append(c.toStringHTML());
+        }
+        r.append("\t\t</tbody>\n");
+
+        r.append("\t\t<tfoot></tfoot>\n");
+        r.append("\t</table>\n");
+
+        return r.toString();
+    }
+
+    public String getTabla() {
+        return toStringHTML();
+    }
+    
     @XmlTransient
     private EstudianteDAO estudiantes;
 }

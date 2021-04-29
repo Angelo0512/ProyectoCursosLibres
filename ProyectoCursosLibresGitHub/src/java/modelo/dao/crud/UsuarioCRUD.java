@@ -45,11 +45,11 @@ public class UsuarioCRUD extends AbstractCRUD{
     
     protected static final String ADD_CMD
             = "INSERT INTO eif209_2021_01.usuario "
-            + "id_usuario, rol_id, clave, ultimo_aceso, activo "
+            + "(id_usuario, rol_id, clave, ultimo_aceso, activo) "
             + "VALUES (?, ?, ?, ?, ?); ";
     protected static final String RETRIEVE_CMD
             = "SELECT "
-            + "id_usuario, rol_id, clave, ultimo_aceso,_activo "
+            + "id_usuario, rol_id, clave, ultimo_aceso, activo "
             + "FROM eif209_2021_01.usuario WHERE id_usuario = ?; ";
     protected static final String UPDATE_CMD
             = "UPDATE eif209_2021_01.usuario "

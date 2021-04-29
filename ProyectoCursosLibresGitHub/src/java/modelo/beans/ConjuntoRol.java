@@ -67,6 +67,51 @@ public class ConjuntoRol implements Serializable{
         throw new UnsupportedOperationException();
     }
     
+    @Override
+    public String toString() {
+        StringBuilder r = new StringBuilder();
+        r.append("[\n");
+        List<Rol> t = getListaRoles();
+        for (Rol c : t) {
+            
+            r.append(String.format("\t%s,%n", c));
+        }
+        r.append("]");
+        return r.toString();
+    }
+
+    public String toStringHTML() {
+        
+        StringBuilder r = new StringBuilder();
+        r.append("\t<table class=\"tablaRoles\">\n");
+        r.append("\t\t<caption>ROLES</caption>");
+        r.append("\t\t<thead>\n");
+        r.append("\t\t\t<tr>\n");
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Rol"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Descripcion"));
+        r.append("\t\t\t<tr>\n");
+        r.append("\t\t</thead>\n");
+
+        r.append("\t\t<tbody>\n");
+        List<Rol> t = getListaRoles();
+        for (Rol c : t) {
+            
+            r.append(c.toStringHTML());
+        }
+        r.append("\t\t</tbody>\n");
+
+        r.append("\t\t<tfoot></tfoot>\n");
+        r.append("\t</table>\n");
+
+        return r.toString();
+    }
+
+
+
+    public String getTabla() {
+        return toStringHTML();
+    }
+    
     @XmlTransient
     private RolDAO roles;
 }

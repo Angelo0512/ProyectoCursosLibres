@@ -66,6 +66,48 @@ public class ConjuntoEspecialidades {
         throw new UnsupportedOperationException();
     }
     
+    @Override
+    public String toString() {
+        StringBuilder r = new StringBuilder();
+        r.append("[\n");
+        List<Especialidad> t = getListaEspecialidades();
+        for (Especialidad c : t) {
+            
+            r.append(String.format("\t%s,%n", c));
+        }
+        r.append("]");
+        return r.toString();
+    }
+
+    public String toStringHTML() {
+        
+        StringBuilder r = new StringBuilder();
+        r.append("\t<table class=\"tablaEspecialidades\">\n");
+        r.append("\t\t<caption>ESPECIALIDADES</caption>");
+        r.append("\t\t<thead>\n");
+        r.append("\t\t\t<tr>\n");
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Profesor"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Area Tematica"));
+        r.append("\t\t\t<tr>\n");
+        r.append("\t\t</thead>\n");
+
+        r.append("\t\t<tbody>\n");
+        List<Especialidad> t = getListaEspecialidades();
+        for (Especialidad c : t) {
+            
+            r.append(c.toStringHTML());
+        }
+        r.append("\t\t</tbody>\n");
+
+        r.append("\t\t<tfoot></tfoot>\n");
+        r.append("\t</table>\n");
+
+        return r.toString();
+    }
+
+    public String getTabla() {
+        return toStringHTML();
+    }
     
     @XmlTransient
     private EspecialidadDAO especialidades;

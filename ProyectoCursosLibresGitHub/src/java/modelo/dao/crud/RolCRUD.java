@@ -45,7 +45,7 @@ public class RolCRUD extends AbstractCRUD{
     
     protected static final String ADD_CMD
             = "INSERT INTO eif209_2021_01.rol "
-            + "(id_rol, descripcion ) "
+            + "(id_rol, descripcion) "
             + "VALUES (?, ?); ";
     protected static final String RETRIEVE_CMD
             = "SELECT "

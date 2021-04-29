@@ -28,7 +28,7 @@
                 </nav>
                 <nav id="menuHeader">
                     <p>
-                        <a href="registro.jsp">Estudiantes</a>
+                        <a href="index.jsp">Estudiantes</a>
                     </p>
                 </nav>
                 <nav id="menuHeader">

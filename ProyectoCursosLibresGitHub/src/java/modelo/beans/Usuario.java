@@ -1,6 +1,7 @@
 package modelo.beans;
 
 import java.io.Serializable;
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -9,7 +10,7 @@ public class Usuario implements Serializable{
     public Usuario() {
     }
 
-    public Usuario(String id_usuario, int rol_id, String clave, Date ultimo_acceso, boolean activo) {
+    public Usuario(String id_usuario, int rol_id, String clave, Timestamp ultimo_acceso, boolean activo) {
         this.id_usuario = id_usuario;
         this.rol_id = rol_id;
         this.clave = clave;
@@ -41,11 +42,11 @@ public class Usuario implements Serializable{
         this.clave = clave;
     }
 
-    public Date getUltimo_acceso() {
+    public Timestamp getUltimo_acceso() {
         return ultimo_acceso;
     }
 
-    public void setUltimo_acceso(Date ultimo_acceso) {
+    public void setUltimo_acceso(Timestamp ultimo_acceso) {
         this.ultimo_acceso = ultimo_acceso;
     }
 
@@ -78,8 +79,9 @@ public class Usuario implements Serializable{
         StringBuilder r = new StringBuilder();
         r.append("\t\t\t<tr>\n");
 
-        r.append(String.format("\t\t\t\t<td>%d</td>\n", getId_usuario()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getId_usuario()));
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getRol_id()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getClave()));
         r.append(String.format("\t\t\t\t<td>&s</td>\n", new SimpleDateFormat("yyyy-MM-dd").format(getUltimo_acceso())));
         r.append(String.format("\t\t\t\t<td>&s</td>\n", estado));
 
@@ -90,6 +92,6 @@ public class Usuario implements Serializable{
     private String id_usuario;
     private int rol_id;
     private String clave;
-    private java.util.Date ultimo_acceso;
+    private Timestamp ultimo_acceso;
     private boolean activo;
 }

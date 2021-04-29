@@ -55,6 +55,50 @@ public class ConjuntoGrupos implements Serializable {
         throw new UnsupportedOperationException();
     }
 
+        @Override
+    public String toString() {
+        StringBuilder r = new StringBuilder();
+        r.append("[\n");
+        List<Grupo> t = getListaGrupos();
+        for (Grupo c : t) {
+            
+            r.append(String.format("\t%s,%n", c));
+        }
+        r.append("]");
+        return r.toString();
+    }
+
+    public String toStringHTML() {
+        
+        StringBuilder r = new StringBuilder();
+        r.append("\t<table class=\"tablaGrupos\">\n");
+        r.append("\t\t<caption>GRUPOS</caption>");
+        r.append("\t\t<thead>\n");
+        r.append("\t\t\t<tr>\n");
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Numero Grupo"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Curso"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Profesor"));
+        r.append("\t\t\t<tr>\n");
+        r.append("\t\t</thead>\n");
+
+        r.append("\t\t<tbody>\n");
+        List<Grupo> t = getListaGrupos();
+        for (Grupo c : t) {
+            
+            r.append(c.toStringHTML());
+        }
+        r.append("\t\t</tbody>\n");
+
+        r.append("\t\t<tfoot></tfoot>\n");
+        r.append("\t</table>\n");
+
+        return r.toString();
+    }
+
+    public String getTabla() {
+        return toStringHTML();
+    }
+    
     @XmlTransient
     private GrupoDAO grupos;
 }
