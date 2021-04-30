@@ -58,7 +58,7 @@ public class Curso implements Serializable {
 
         r.append(String.format(
                 "\t\t\t\t<td><form action='%s'><button name='grupos' value='%d'>%s</button></td></form>\n",
-                "ServicioGrupo",
+                "",
                 getId_curso(),
                 "Ver"));
 
