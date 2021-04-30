@@ -7,6 +7,9 @@
         <link href="CSS/abrir_grupo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <jsp:useBean id="grupos" class="modelo.beans.ConjuntoGrupos" scope="application">
+            <jsp:setProperty name="g" property="*"></jsp:setProperty> 
+        </jsp:useBean>
         <div id="wrapper">
             <header style="overflow: hidden;">
                 <nav id="menuHeader">
@@ -42,27 +45,27 @@
                 </nav>
             </header>
             <div id="contents">
-                <form method="GET" action="ServicioCrear">
+                <form method="GET" action="ServicioGrupo">
                     <table class="abrir grupo">
                         <tbody>
                             <tr>
                                 <td class="etiqueta">Id del grupo:&nbsp;</td>
                                 <td>  
-                                    <input class="inputField" type="text" name="idGrupo" id="idGrupo" size="25" placeholder="(Id del grupo)" required/>
+                                    <input class="inputField" type="text" name="num_grupo" id="num_grupo" size="25" placeholder="(Id del grupo)" required/>
                                 </td>
                             </tr>
                             <tr>
                                 <td class="etiqueta">Id del curso:&nbsp;</td>
                                 <td>  
                                     <!-- Se tiene que validar que el curso exista o desplegar una lista -->
-                                    <input class="inputField" type="text" name="idCurso" id="idCurso" size="25" placeholder="(Id del curso)" required/>
+                                    <input class="inputField" type="text" name="curso_id" id="curso_id" size="25" placeholder="(Id del curso)" required/>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="etiqueta">Id del curso:&nbsp;</td>
+                                <td class="etiqueta">Id del profesor:&nbsp;</td>
                                 <td>  
                                     <!-- Se tiene que validar que el profesor exista o desplegar una lista -->
-                                    <input class="inputField" type="text" name="idProfesor" id="idProfesor" size="25" placeholder="(Id del profesor)" required/>
+                                    <input class="inputField" type="text" name="profesor_id" id="profesor_id" size="25" placeholder="(Id del profesor)" required/>
                                 </td>
                             </tr>
                             <tr>

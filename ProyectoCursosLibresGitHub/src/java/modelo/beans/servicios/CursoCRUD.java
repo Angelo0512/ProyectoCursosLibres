@@ -1,4 +1,4 @@
-package modelo.dao.crud;
+package modelo.beans.servicios;
 
 import cursolibres.db.dao.crud.AbstractCRUD;
 
@@ -23,6 +23,10 @@ public class CursoCRUD extends AbstractCRUD {
     public String getRetrieveCmd() {
         return RETRIEVE_CMD;
     }
+    
+    public String getRetrieveTemCmd() {
+        return RETRIEVE_CMD_TEM;
+    }
 
     @Override
     public String getUpdateCmd() {
@@ -46,7 +50,11 @@ public class CursoCRUD extends AbstractCRUD {
     protected static final String RETRIEVE_CMD
             = "SELECT "
             + "id_curso, descripcion, area_tematica_id "
-            + "FROM eif209_2021_01.curso WHERE id_curso= ?; ";
+            + "FROM eif209_2021_01.curso WHERE descripcion= ?; ";
+        protected static final String RETRIEVE_CMD_TEM
+            = "SELECT "
+            + "id_curso, descripcion, area_tematica_id "
+            + "FROM eif209_2021_01.curso WHERE area_tematica_id= ?; ";
     protected static final String UPDATE_CMD
             = "UPDATE eif209_2021_01.curso "
             + "SET descripcion = ?, area_tematica_id = ?"

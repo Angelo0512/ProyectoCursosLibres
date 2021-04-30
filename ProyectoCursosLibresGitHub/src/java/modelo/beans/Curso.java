@@ -7,7 +7,7 @@ package modelo.beans;
 
 import java.io.Serializable;
 
-public class Curso implements Serializable{
+public class Curso implements Serializable {
 
     public Curso() {
     }
@@ -47,7 +47,7 @@ public class Curso implements Serializable{
         return String.format("{%d, %s, %d}", getId_curso(), getDescripcion(),
                 getArea_tematica_id());
     }
-    
+
     public String toStringHTML() {
         StringBuilder r = new StringBuilder();
         r.append("\t\t\t<tr>\n");
@@ -56,10 +56,16 @@ public class Curso implements Serializable{
         r.append(String.format("\t\t\t\t<td>%s</td>\n", getDescripcion()));
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getArea_tematica_id()));
 
+        r.append(String.format(
+                "\t\t\t\t<td><form action='%s'><button name='grupos' value='%d'>%s</button></td></form>\n",
+                "ServicioGrupo",
+                getId_curso(),
+                "Ver"));
+
         r.append("\t\t\t</tr>\n");
         return r.toString();
     }
-    
+
     private int id_curso;
     private String descripcion;
     private int area_tematica_id;

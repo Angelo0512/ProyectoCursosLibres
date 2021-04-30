@@ -1,3 +1,4 @@
+<%@page import="modelo.beans.Curso"%>
 <!DOCTYPE html>
 
 <html>
@@ -49,13 +50,13 @@
                 </nav>
             </header>
             <div id="contents">
-                <form method="GET" action="ServicioBusqueda">
+                <form method="GET" action="ServicioBusquedaCurso">
                     <table class="busqueda">
                         <tbody>
                             <tr>
                                 <td class="etiqueta">Nombre:&nbsp;</td>
                                 <td>  
-                                    <input class="inputField" type="text" name="nombre" id="nombre" size="25" placeholder="(nombre)"/>
+                                    <input class="inputField" type="text" name="descripcion" id="descripcion" size="25" placeholder="(nombre)"/>
                                 </td>
                             </tr>
                             <tr>
@@ -75,7 +76,47 @@
                         </tbody>
                     </table>
                     <div class="d2columnas">
+
+                        <%
+                            Curso c = (Curso) request.getAttribute("busquedaCurso");
+                            if (c != null) {
+                        %>
+
+                        <table class="tablaCursos">
+                            <caption> CURSOS </caption>
+                            <thead>
+                                <tr>
+                                    <th>ID curso</th>
+                                    <th>Nombre</th>
+                                    <th>Area Tematica</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%= c.toStringHTML()%>
+                            </tbody>
+                        </table>
+
+                        <%
+                        } else {
+                            String descripcion = request.getParameter("descripcion");
+                            if ((descripcion != null) && !descripcion.isEmpty()) {
+                        %>
+
+                        <p class="mensajeError">
+                            No se encuentran cursos con el nombre: <strong><%= descripcion%></strong>
+                        </p>
+
+                        <%
+                        } else {
+                        %>
+
                         ${cursos.tabla}
+
+                        <%
+                                }
+                            }
+                        %>
                     </div>
                 </form>
             </div>

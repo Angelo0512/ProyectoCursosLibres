@@ -29,25 +29,25 @@ public class ConjuntoCursos implements Serializable {
             return new ArrayList<>();
         }
     }
-        
+
     public void add(Curso nuevoCurso) throws SQLException, IOException {
         cursos.add(nuevoCurso.getId_curso(), nuevoCurso);
     }
-    
-    public Curso retrieve(int id) throws SQLException, IOException{
-        try{
-        return cursos.retrieve(id);
+
+    public Curso retrieve(int id) throws SQLException, IOException {
+        try {
+            return cursos.retrieve(id);
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
             return new Curso();
         }
     }
-    
-    public void update(int id, Curso curso) throws SQLException, IOException{
+
+    public void update(int id, Curso curso) throws SQLException, IOException {
         cursos.update(id, curso);
     }
-    
-    public void delete(int id) throws SQLException, IOException{
+
+    public void delete(int id) throws SQLException, IOException {
         cursos.delete(id);
     }
 
@@ -61,7 +61,7 @@ public class ConjuntoCursos implements Serializable {
         r.append("[\n");
         List<Curso> t = getListaCursos();
         for (Curso c : t) {
-            
+
             r.append(String.format("\t%s,%n", c));
         }
         r.append("]");
@@ -69,7 +69,7 @@ public class ConjuntoCursos implements Serializable {
     }
 
     public String toStringHTML() {
-        
+
         StringBuilder r = new StringBuilder();
         r.append("\t<table class=\"tablaCursos\">\n");
         r.append("\t\t<caption>CURSOS</caption>");
@@ -78,13 +78,14 @@ public class ConjuntoCursos implements Serializable {
         r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Curso"));
         r.append(String.format("\t\t\t\t<th>%s</th>\n", "Descripcion"));
         r.append(String.format("\t\t\t\t<th>%s</th>\n", "Area Tematica"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", ""));
         r.append("\t\t\t<tr>\n");
         r.append("\t\t</thead>\n");
 
         r.append("\t\t<tbody>\n");
         List<Curso> t = getListaCursos();
         for (Curso c : t) {
-            
+
             r.append(c.toStringHTML());
         }
         r.append("\t\t</tbody>\n");
@@ -94,8 +95,6 @@ public class ConjuntoCursos implements Serializable {
 
         return r.toString();
     }
-
-
 
     public String getTabla() {
         return toStringHTML();

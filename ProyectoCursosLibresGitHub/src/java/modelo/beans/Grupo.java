@@ -7,7 +7,7 @@ import java.io.Serializable;
  * @authores Luis Restrepo V. Angelo Calvo M. Daniel Sánchez S.
  * @version 1.0
  */
-public class Grupo implements Serializable{
+public class Grupo implements Serializable {
 
     public Grupo() {
     }
@@ -48,7 +48,7 @@ public class Grupo implements Serializable{
         return String.format("{%d, %d, %d}", getNum_grupo(), getCurso_id(),
                 getProfesor_id());
     }
-    
+
     public String toStringHTML() {
         StringBuilder r = new StringBuilder();
         r.append("\t\t\t<tr>\n");
@@ -57,10 +57,16 @@ public class Grupo implements Serializable{
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getCurso_id()));
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getProfesor_id()));
 
+        r.append(String.format(
+                "\t\t\t\t<td><form action='%s'><button name='grupo' value='%d'>%s</button></td></form>\n",
+                "",
+                getNum_grupo(),
+                "Matricular"));
+
         r.append("\t\t\t</tr>\n");
         return r.toString();
     }
-    
+
     private int num_grupo;
     private int curso_id;
     private int profesor_id;

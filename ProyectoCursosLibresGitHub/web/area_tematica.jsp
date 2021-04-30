@@ -4,9 +4,12 @@
     <head>
         <title>Abrir area tematica</title>
         <meta charset="UTF-8">
-        <link href="CSS/abrir_grupo.css" rel="stylesheet" type="text/css"/>
+        <link href="CSS/area_tematica.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <jsp:useBean id="areasTematicas" class="modelo.beans.ConjuntoAreasTematicas" scope="application">
+            <jsp:setProperty name="at" property="*"></jsp:setProperty> 
+        </jsp:useBean>
         <div id="wrapper">
             <header style="overflow: hidden;">
                 <nav id="menuHeader">
@@ -42,27 +45,19 @@
                 </nav>
             </header>
             <div id="contents">
-                <form method="GET" action="ServicioCrear">
-                    <table class="abrir grupo">
+                <form method="GET" action="ServicioAreaTematica">
+                    <table class="abrir area tematica">
                         <tbody>
                             <tr>
-                                <td class="etiqueta">Id del grupo:&nbsp;</td>
+                                <td class="etiqueta">Id del area tematica&nbsp;</td>
                                 <td>  
-                                    <input class="inputField" type="text" name="idGrupo" id="idGrupo" size="25" placeholder="(Id del grupo)" required/>
+                                    <input class="inputField" type="text" name="idArea" id="idArea" size="25" placeholder="(Id del area)" required/>
                                 </td>
                             </tr>
                             <tr>
-                                <td class="etiqueta">Id del curso:&nbsp;</td>
+                                <td class="etiqueta">Descripcion:&nbsp;</td>
                                 <td>  
-                                    <!-- Se tiene que validar que el curso exista o desplegar una lista -->
-                                    <input class="inputField" type="text" name="idCurso" id="idCurso" size="25" placeholder="(Id del curso)" required/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td class="etiqueta">Id del curso:&nbsp;</td>
-                                <td>  
-                                    <!-- Se tiene que validar que el profesor exista o desplegar una lista -->
-                                    <input class="inputField" type="text" name="idProfesor" id="idProfesor" size="25" placeholder="(Id del profesor)" required/>
+                                    <input class="inputField" type="text" name="descripcion" id="descripcion" size="25" placeholder="(Descripcion)" required/>
                                 </td>
                             </tr>
                             <tr>
@@ -76,6 +71,9 @@
                             </tr>
                         </tbody>
                     </table>
+                    <div class="d2columnas">
+                        ${areasTematicas.tabla}
+                    </div>
                 </form>
             </div>
             <footer></footer>
