@@ -1,12 +1,12 @@
 package modelo.dao;
 
+import modelo.beans.servicios.UsuarioCRUD;
 import cursolibres.db.dao.AbstractDAO;
 import cursolibres.db.dao.crud.AbstractCRUD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.beans.Usuario;
-import modelo.dao.crud.UsuarioCRUD;
 import java.sql.Timestamp;
 import java.util.Date;
 

@@ -8,10 +8,10 @@
     <body>
         <div id="wrapper">
             <div id="contents">
-                <form action="" method="POST">
-                    <input class="inputField" type="text" placeholder="Usuario" name="user" required>
+                <form action="Login" method="POST">
+                    <input class="inputField" type="text" placeholder="Identificacion" name="id_usuario" required>
                     <div class="pass">
-                        <input id="pass1" class="passField" type="password" name="pass" placeholder="Contraseña" required>
+                        <input id="pass1" class="passField" type="password" name="clave" placeholder="Contraseña" required>
                     </div>      
                     <button id="botonlogin" type="submit">Iniciar sesión</button>
                 </form>
