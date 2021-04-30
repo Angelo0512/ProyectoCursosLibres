@@ -1,17 +1,117 @@
-<%-- 
-    Document   : inicioProfesor
-    Created on : 30/04/2021, 10:58:35 AM
-    Author     : Luis Restrepo
---%>
-
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="modelo.beans.Curso"%>
 <!DOCTYPE html>
+
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Cursos Libres</title>
+        <meta charset="UTF-8">
+        <link href="CSS/default.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <jsp:useBean id="cursos" class="modelo.beans.ConjuntoCursos" scope="application">
+        </jsp:useBean>
+        <div id="wrapper">
+            <header style="overflow: hidden;">
+                <nav id="menuHeader">
+                    <p>
+                        <a href="inicioProfesor.jsp">Inicio</a>
+                    </p>
+                </nav>
+                <nav id="menuHeader">
+                    <p>
+                        <a href="index.jsp">Cursos</a>
+                    </p>
+                </nav>
+                <nav id="menuHeader">
+                    <p>
+                        <a href="grupo.jsp">Grupos</a>
+                    </p>
+                </nav>
+                <nav id="menuHeader">
+                    <p>
+                        <a href="index.jsp">Estudiantes</a>
+                    </p>
+                </nav>
+                <form method="GET" action="Logout">
+                    <nav id="loginHeader">
+                        <p>
+                            <a href="login.jsp">Cerrar sesión</a>
+                        </p>
+                    </nav>
+                </form>
+            </header>
+            <div id="contents">
+                <form method="GET" action="ServicioBusquedaCurso">
+                    <table class="busqueda">
+                        <tbody>
+                            <tr>
+                                <td class="etiqueta">Nombre:&nbsp;</td>
+                                <td>  
+                                    <input class="inputField" type="text" name="descripcion" id="descripcion" size="25" placeholder="(nombre)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="etiqueta">Tematica:&nbsp;</td>
+                                <td> 
+                                    <input class="inputField" type="text" name="tematica" id="tematica" size="25" placeholder="(tematica)"/>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="2" class="botones">
+                                    <p style="text-align: center;">
+                                        <button type="submit">Buscar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                        <button type="reset">Borrar</button>&nbsp;
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="d2columnas">
+
+                        <%
+                            Curso c = (Curso) request.getAttribute("busquedaCurso");
+                            if (c != null) {
+                        %>
+
+                        <table class="tablaCursos">
+                            <caption> CURSOS </caption>
+                            <thead>
+                                <tr>
+                                    <th>ID curso</th>
+                                    <th>Nombre</th>
+                                    <th>Area Tematica</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%= c.toStringHTML()%>
+                            </tbody>
+                        </table>
+
+                        <%
+                        } else {
+                            String descripcion = request.getParameter("descripcion");
+                            if ((descripcion != null) && !descripcion.isEmpty()) {
+                        %>
+
+                        <p class="mensajeError">
+                            No se encuentran cursos con el nombre: <strong><%= descripcion%></strong>
+                        </p>
+
+                        <%
+                        } else {
+                        %>
+
+                        ${cursos.tabla}
+
+                        <%
+                                }
+                            }
+                        %>
+                    </div>
+                </form>
+            </div>
+            <footer></footer>
+        </div>
     </body>
 </html>

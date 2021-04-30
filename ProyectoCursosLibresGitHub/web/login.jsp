@@ -22,6 +22,11 @@
                         No tienes una cuenta? <a href="registro.jsp">Regístrate</a>
                     </p>
                 </nav>
+                <nav>
+                    <p style="text-align: center;">
+                        Regresar a la <a href="index.jsp">Pagina principal</a>
+                    </p>
+                </nav>
             </footer>
         </div>
     </body>
