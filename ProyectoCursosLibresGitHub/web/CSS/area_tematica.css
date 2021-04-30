@@ -82,3 +82,39 @@ header {
     padding: 8px;
     text-align: center;
 }
+
+.tablaAreasTematicas caption{
+    background-color: #505453;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    color: white;
+}
+
+
+.tablaAreasTematicas {
+    border: none;
+    border-bottom: 2px solid darkslategrey;
+    border-collapse: collapse;
+    font-size: smaller;
+}
+
+.tablaAreasTematicas th,
+.tablaAreasTematicas td {
+    border: none;
+    padding: 10px 25px 10px 25px;
+}
+
+.tablaAreasTematicas tbody tr:nth-child(odd) {
+    background-color: #ededeb;
+}
+
+.tablaAreasTematicas th {
+    background-color: #505453;
+    border: none;
+    color: white;
+}
+
+

@@ -36,7 +36,7 @@ public class Area_tematicaCRUD extends AbstractCRUD {
     
     protected static final String LIST_CMD
             = "SELECT "
-            + "id_area, descripcion"
+            + "id_area, descripcion "
             + "FROM eif209_2021_01.area_tematica ORDER BY id_area; ";
     
     protected static final String ADD_CMD

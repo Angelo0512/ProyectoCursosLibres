@@ -7,6 +7,9 @@
         <link href="CSS/grupo.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <jsp:useBean id="grupo" class="modelo.beans.ConjuntoGrupos" scope="application">
+            <jsp:setProperty name="gr" property="*"></jsp:setProperty> 
+        </jsp:useBean>
         <div id="wrapper">
             <header style="overflow: hidden;">
                 <nav id="menuHeader">
@@ -42,13 +45,13 @@
                 </nav>
             </header>
             <div id="contents">
-                <form method="GET" action="ServicioBusqueda">
+                <form method="GET" action="ServicioGrupo">
                     <table class="busqueda grupo">
                         <tbody>
                             <tr>
                                 <td class="etiqueta">Id del grupo:&nbsp;</td>
                                 <td>  
-                                    <input class="inputField" type="text" name="idGrupo" id="idGrupo" size="25" placeholder="(Id del grupo)" required/>
+                                    <input class="inputField" type="text" name="num_grupo" id="num_grupo" size="25" placeholder="(Id del grupo)" required/>
                                 </td>
                             </tr>
                             <tr>
@@ -59,75 +62,14 @@
                                         <button type="reset">Eliminar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                        <a href="abrir_grupo.jsp">Abrir grupo</a>&nbsp;
                                        <a href="carga_asignada.jsp">Carga asignada de profesores</a>&nbsp;
+                                       <a href="area_tematica.jsp">Area tematica</a>
                                     </p>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    <div class="gruposcolumnas">
-                        <section id="secc1">
-                            <table class="tablaGrupos">
-                                <caption><u>GRUPOS</u></caption>
-                                <thead>
-                                    <tr>
-                                        <th>&nbsp;</th>
-                                        <th>ID</th>
-                                        <th>Curso ID</th>
-                                        <th>Profesor ID</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>40060</td>
-                                        <td>2255</td>
-                                        <td>123456789</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>40061</td>
-                                        <td>2255</td>
-                                        <td>123456789</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>40062</td>
-                                        <td>2255</td>
-                                        <td>123456789</td>
-                                    </tr>
-                                    <tr>
-                                        <td>4</td>
-                                        <td>4073</td>
-                                        <td>5522</td>
-                                        <td>987654321</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>4074</td>
-                                        <td>5522</td>
-                                        <td>987654321</td>
-                                    </tr>
-                                    <tr>
-                                        <td>5</td>
-                                        <td>4075</td>
-                                        <td>5522</td>
-                                        <td>987654321</td>
-                                    </tr>
-                                    <tr>
-                                        <td>6</td>
-                                        <td>40064</td>
-                                        <td>2525</td>
-                                        <td>147852369</td>
-                                    </tr>
-                                    <tr>
-                                        <td>7</td>
-                                        <td>40065</td>
-                                        <td>2525</td>
-                                        <td>147852369</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </section>
+                   <div class="d2columnas">
+                        ${grupo.tabla}
                     </div>
                 </form>
             </div>
