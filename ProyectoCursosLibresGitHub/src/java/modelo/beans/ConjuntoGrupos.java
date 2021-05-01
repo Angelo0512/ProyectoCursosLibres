@@ -116,7 +116,7 @@ public class ConjuntoGrupos implements Serializable {
         List<Grupo> t = getListaGrupos();
         for (Grupo c : t) {
             if (c.getProfesor_id() == profesor_id){
-                r.append(c.toStringHTML());
+                r.append(c.toStringHTMLCarga());
             }
         }
         r.append("\t\t</tbody>\n");
@@ -127,10 +127,18 @@ public class ConjuntoGrupos implements Serializable {
         return r.toString();
     }    
     
+   /* public String getTablaCarga() { 
+        eturn toStringHTMLCarga(321);
+    }*/
     //muestra la tabla de carga de los profesores
-     public String getTablaCarga() { 
-        return toStringHTMLCarga(321);
+    public String getTablaCarga(int id) { 
+        return toStringHTMLCarga(id);
     }
+     
+    public static String getTablaCarga(ConjuntoGrupos instancia, String id) {
+        return instancia.getTablaCarga(Integer.parseInt(id));
+    }
+
     
     @XmlTransient
     private GrupoDAO grupos;

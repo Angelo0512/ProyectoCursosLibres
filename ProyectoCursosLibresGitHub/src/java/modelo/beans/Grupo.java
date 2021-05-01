@@ -75,7 +75,17 @@ public class Grupo implements Serializable {
                 "ServicioMatricula",
                 getNum_grupo(),
                 "Matricular"));
-        //r.append("\t\t\t\t<%!\n" + "String id_usuario;\n" + "%>\n" +"<%\n" + "id_usuario = request.getParameter(\"id_usuario\");\n" + "%>");
+        r.append("\t\t\t</tr>\n");
+        return r.toString();
+    }
+    
+    public String toStringHTMLCarga() {
+        StringBuilder r = new StringBuilder();
+        r.append("\t\t\t<tr>\n");
+
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getNum_grupo()));
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getCurso_id()));
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getProfesor_id()));
         r.append("\t\t\t</tr>\n");
         return r.toString();
     }

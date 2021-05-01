@@ -1,3 +1,4 @@
+<%@taglib prefix="ej" uri="/WEB-INF/tlds/ejemplo" %>
 <!DOCTYPE html>
 
 <html>
@@ -8,7 +9,9 @@
     </head>
     <body>
         <jsp:useBean id="cargas" class="modelo.beans.ConjuntoGrupos" scope="application">
-            <jsp:setProperty name="c" property="*"></jsp:setProperty> 
+        </jsp:useBean>
+        <jsp:useBean id="user" class="modelo.beans.Usuario" scope="session">
+            <jsp:setProperty name="user" property="id_usuario" value="${user.id_usuario}"></jsp:setProperty>
         </jsp:useBean>
         <div id="wrapper">
             <header style="overflow: hidden;">
@@ -66,7 +69,7 @@
                         </tbody>
                     </table>
                     <div class="d2columnas">
-                        ${cargas.tablaCarga}
+                        ${ej:getTablaCarga(cargas, user.id_usuario)}
                     </div>
                 </form>
             </div>
