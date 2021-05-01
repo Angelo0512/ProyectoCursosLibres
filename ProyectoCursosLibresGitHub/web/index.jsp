@@ -89,8 +89,8 @@
                             <caption> CURSOS </caption>
                             <thead>
                                 <tr>
-                                    <th>ID curso</th>
-                                    <th>Nombre</th>
+                                    <th>Id Curso</th>
+                                    <th>Descripcion</th>
                                     <th>Area Tematica</th>
                                     <th></th>
                                 </tr>
@@ -108,8 +108,8 @@
                             <caption> CURSOS </caption>
                             <thead>
                                 <tr>
-                                    <th>ID curso</th>
-                                    <th>Nombre</th>
+                                    <th>Id Curso</th>
+                                    <th>Descripcion</th>
                                     <th>Area Tematica</th>
                                     <th></th>
                                 </tr>
@@ -131,7 +131,7 @@
                         </table>
 
                         <%
-                            }else {
+                        } else {
                             String descripcion = request.getParameter("descripcion");
                             if ((descripcion != null) && !descripcion.isEmpty()) {
                         %>
@@ -142,11 +142,22 @@
 
                         <%
                         } else {
+                            String tematica = request.getParameter("tematica");
+                            if ((tematica != null) && !tematica.isEmpty()) {
+                        %>
+
+                        <p class="mensajeError">
+                            No se encuentran cursos de la tematica: <strong><%= tematica%></strong>
+                        </p>
+
+                        <%
+                        } else {
                         %>
 
                         ${cursos.tabla}
 
                         <%
+                                    }
                                 }
                             }
                         %>
