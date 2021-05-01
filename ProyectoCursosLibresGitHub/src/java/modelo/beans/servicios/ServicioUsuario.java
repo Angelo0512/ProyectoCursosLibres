@@ -12,7 +12,12 @@ import modelo.beans.Usuario;
 
 public class ServicioUsuario extends HttpServlet {
 
-    public Usuario obtenerUsuario(String id_usuario) {
+    public Usuario obtenerUsuario(String id_usuario) throws
+            ClassNotFoundException,
+            IllegalAccessException,
+            InstantiationException,
+            IOException,
+            SQLException{
         Usuario user = new Usuario();
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(UsuarioCRUD.RETRIEVE_CMD);) {

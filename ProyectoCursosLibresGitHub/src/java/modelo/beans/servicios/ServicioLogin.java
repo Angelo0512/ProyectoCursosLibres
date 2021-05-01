@@ -41,7 +41,7 @@ public class ServicioLogin extends HttpServlet {
             user.setId_usuario(id_usuario);
             user = servicioUs.obtenerUsuario(id_usuario);
 
-            if (user.getClave().equals(clave)){
+            if (user.getClave().equals(clave)) {
 
                 if (user.getRol_id() == 1) {
                     Administrador admin = new Administrador();
@@ -62,10 +62,11 @@ public class ServicioLogin extends HttpServlet {
                     request.getRequestDispatcher("inicioEstudiante.jsp").
                             forward(request, response);
                 }
+            } else {
+                throw new Exception();
             }
-
-        } catch (IOException | ServletException e) {
-            request.setAttribute("error", "Credenciales incorrectas..");
+        } catch (Exception e) {
+            request.setAttribute("error", "Credenciales incorrectas.");
             request.getRequestDispatcher("errorLogin.jsp").
                     forward(request, response);
         }
