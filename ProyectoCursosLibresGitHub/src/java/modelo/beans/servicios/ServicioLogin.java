@@ -43,10 +43,12 @@ public class ServicioLogin extends HttpServlet {
                 s.setAttribute("administrador", user);
                 request.getRequestDispatcher("inicioAdministrativo.jsp").
                         forward(request, response);
+                request.getSession().setAttribute("user", user);
             } else if (user.getRol_id() == 2) {
                 s.setAttribute("profesor", user);
                 request.getRequestDispatcher("inicioProfesor.jsp").
                         forward(request, response);
+                request.getSession().setAttribute("user", user);
             } else if (user.getRol_id() == 3) {
                 s.setAttribute("estudiante", user);
                 request.getRequestDispatcher("inicioEstudiante.jsp").
