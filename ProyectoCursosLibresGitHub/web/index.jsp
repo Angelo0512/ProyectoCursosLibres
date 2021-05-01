@@ -1,3 +1,5 @@
+<%@page import="java.util.ArrayList"%>
+<%@page import="modelo.beans.ConjuntoCursos"%>
 <%@page import="modelo.beans.Curso"%>
 <!DOCTYPE html>
 
@@ -50,7 +52,7 @@
                 </nav>
             </header>
             <div id="contents">
-                <form method="GET" action="ServicioBusquedaCurso">
+                <form method="POST" action="ServicioBusquedaCurso">
                     <table class="busqueda">
                         <tbody>
                             <tr>
@@ -79,6 +81,7 @@
 
                         <%
                             Curso c = (Curso) request.getAttribute("busquedaCurso");
+                            ArrayList<Curso> cc = (ArrayList<Curso>) request.getAttribute("busquedaCursoTematica");
                             if (c != null) {
                         %>
 
@@ -98,7 +101,37 @@
                         </table>
 
                         <%
-                        } else {
+                        } else if (cc != null) {
+                        %>
+
+                        <table class="tablaCursos">
+                            <caption> CURSOS </caption>
+                            <thead>
+                                <tr>
+                                    <th>ID curso</th>
+                                    <th>Nombre</th>
+                                    <th>Area Tematica</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <%for (Curso curso : cc) {%>
+                                <tr>
+                                    <td><%=curso.getId_curso()%></td>
+                                    <td><%=curso.getDescripcion()%></td>
+                                    <td><%=curso.getArea_tematica_id()%></td>
+                                    <td>
+                                        <form action="" method="POST">
+                                            <button name="grupos" value="<%=curso.getId_curso()%>">Ver</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                <%}%>
+                            </tbody>
+                        </table>
+
+                        <%
+                            }else {
                             String descripcion = request.getParameter("descripcion");
                             if ((descripcion != null) && !descripcion.isEmpty()) {
                         %>

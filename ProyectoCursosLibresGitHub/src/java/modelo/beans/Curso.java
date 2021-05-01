@@ -57,7 +57,7 @@ public class Curso implements Serializable {
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getArea_tematica_id()));
 
         r.append(String.format(
-                "\t\t\t\t<td><form action='%s'><button name='grupos' value='%d'>%s</button></td></form>\n",
+                "\t\t\t\t<td><form action='%s'><button name='grupos' value='%d'>%s</button></form></td>\n",
                 "",
                 getId_curso(),
                 "Ver"));

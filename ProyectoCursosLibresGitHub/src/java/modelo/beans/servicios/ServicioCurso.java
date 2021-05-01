@@ -38,20 +38,21 @@ public class ServicioCurso {
         }
         return r;
     }
-    
-        public Optional<Curso> obtenerCursoTematica(String tematica) {
-        Optional<Curso> r = Optional.empty();
+
+    public List<Curso> obtenerListaCursosTematica(String tematica) {
+        List<Curso> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
                 PreparedStatement stm = cnx.prepareStatement(CursoCRUD.RETRIEVE_CMD_TEM);) {
             stm.clearParameters();
             stm.setString(1, tematica);
             try (ResultSet rs = stm.executeQuery()) {
-                if (rs.next()) {
-                    r = Optional.of(new Curso(
+                while (rs.next()) {
+                    Curso c = new Curso(
                             rs.getInt("id_curso"),
                             rs.getString("descripcion"),
                             rs.getInt("area_tematica_id")
-                    ));
+                    );
+                    r.add(c);
                 }
             }
         } catch (IOException

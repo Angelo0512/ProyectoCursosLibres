@@ -8,6 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.beans.ConjuntoCursos;
 
 @WebServlet(name = "ServicioBusquedaCurso", urlPatterns = {"/ServicioBusquedaCurso"})
 public class ServicioBusquedaCurso extends HttpServlet {
@@ -18,16 +19,13 @@ public class ServicioBusquedaCurso extends HttpServlet {
 
         String nombre = request.getParameter("descripcion");
         String tematica = request.getParameter("tematica");
-        if (nombre != null) {
+        if (nombre != "") {
             servicio.obtenerCursoNombre(nombre)
                     .ifPresent(c -> request.setAttribute("busquedaCurso", c));
+        } else if (tematica != "") {
+            request.setAttribute("busquedaCursoTematica",servicio.obtenerListaCursosTematica(tematica));
         }
-        
-        else if (tematica != null) {
-            servicio.obtenerCursoTematica(tematica)
-                    .ifPresent(c -> request.setAttribute("busquedaCurso", c));
-        }
-        
+
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
 
