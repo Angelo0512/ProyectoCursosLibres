@@ -11,25 +11,9 @@
         <jsp:useBean id="cursos" class="modelo.beans.ConjuntoCursos" scope="application">
         </jsp:useBean>
         <div id="wrapper">
-            <header style="overflow: hidden;">
-                <nav id="menuHeader">
-                    <p>
-                        <a href="inicioEstudiante.jsp">Inicio</a>
-                    </p>
-                </nav>
-                <nav id="menuHeader">
-                    <p>
-                        <a href="index.jsp">Cursos</a>
-                    </p>
-                </nav>
-                <form method="GET" action="Logout">
-                    <nav id="loginHeader">
-                        <p>
-                            <a href="login.jsp">Cerrar sesión</a>
-                        </p>
-                    </nav>
-                </form>
-            </header>
+            
+            <%@ include file="header.jsp" %>
+            
             <div id="contents">
                 <form method="GET" action="ServicioBusquedaCurso">
                     <table class="busqueda">

@@ -9,8 +9,9 @@
     </head>
     <body>
         <div id="wrapper">
-            <header>
-            </header>
+
+            <%@ include file="header.jsp" %>
+            
             <nav>
                 <p>
                     <a href="index.jsp">Ir a la pagina principal</a>

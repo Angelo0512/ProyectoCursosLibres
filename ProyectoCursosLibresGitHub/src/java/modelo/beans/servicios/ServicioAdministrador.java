@@ -1,8 +1,6 @@
 package modelo.beans.servicios;
 
 import cursolibres.db.Database;
-import modelo.beans.ConjuntoEstudiantes;
-import modelo.beans.Estudiante;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,54 +11,33 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import modelo.beans.Administrador;
 
-@WebServlet(name = "ServicioEstudiante", urlPatterns = {"/ServicioEstudiante"})
-public class ServicioEstudiante extends HttpServlet {
+@WebServlet(name = "ServicioAdministrador", urlPatterns = {"/ServicioAdministrador"})
+public class ServicioAdministrador extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
-        System.out.println("Servlet ServicioEstudiante..");
-
-        try {
-            Estudiante e = new Estudiante(
-                    Integer.parseInt(request.getParameter("id")),
-                    request.getParameter("usuario_id"),
-                    request.getParameter("apellido1"),
-                    request.getParameter("apellido2"),
-                    request.getParameter("nombre"),
-                    request.getParameter("telefono"),
-                    request.getParameter("email"));
-
-            ConjuntoEstudiantes estudiantes
-                    = (ConjuntoEstudiantes) getServletContext().getAttribute("estudiantes");
-            estudiantes.add(e);
-            System.out.println(estudiantes);
-
-            response.sendRedirect("index.jsp");
-
-        } catch (IOException | NumberFormatException | SQLException  ex) {
-            System.err.printf("Excepción: '%s'%n", ex.getMessage());
-            response.sendRedirect("error.jsp");
-        }
+        System.out.println("Servlet ServicioAdministrador..");
     }
-    
-    public Estudiante obtenerEstudiante(String id_usuario) {
-        Estudiante est = new Estudiante();
+
+    public Administrador obtenerAdministrador(String id_usuario) {
+        Administrador admin = new Administrador();
         try (Connection cnx = obtenerConexion();
-                PreparedStatement stm = cnx.prepareStatement(EstudianteCRUD.RETRIEVE_CMD);) {
+                PreparedStatement stm = cnx.prepareStatement(AdministradorCRUD.RETRIEVE_CMD);) {
             stm.clearParameters();
             stm.setString(1, id_usuario);
             try (ResultSet rs = stm.executeQuery()) {
                 if (rs.next()) {
-                    est.setId_estudiante(rs.getInt("id_estudiante"));
-                    est.setUsuario_id(rs.getString("usuario_id"));
-                    est.setApellido1(rs.getString("apellido1"));
-                    est.setApellido2(rs.getString("apellido2"));
-                    est.setNombre(rs.getString("nombre"));
-                    est.setTelefono(rs.getString("telefono"));
-                    est.setE_mail(rs.getString("e_mail"));
+                    admin.setId_administrador(rs.getInt("id_administrador"));
+                    admin.setUsuario_id(rs.getString("usuario_id"));
+                    admin.setApellido1(rs.getString("apellido1"));
+                    admin.setApellido2(rs.getString("apellido2"));
+                    admin.setNombre(rs.getString("nombre"));
+                    admin.setTelefono(rs.getString("telefono"));
+                    admin.setE_mail(rs.getString("e_mail"));
                 }
             }
         } catch (IOException
@@ -70,9 +47,9 @@ public class ServicioEstudiante extends HttpServlet {
                 | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
         }
-        return est;
+        return admin;
     }
-    
+
     public Connection obtenerConexion() throws
             ClassNotFoundException,
             IllegalAccessException,
@@ -98,6 +75,6 @@ public class ServicioEstudiante extends HttpServlet {
 
     @Override
     public String getServletInfo() {
-        return "ServicioEstudiante";
+        return "ServicioAdministrador";
     }
 }

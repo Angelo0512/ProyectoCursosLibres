@@ -1,4 +1,4 @@
-package modelo.dao.crud;
+package modelo.beans.servicios;
 
 import cursolibres.db.dao.crud.AbstractCRUD;
 
@@ -46,7 +46,7 @@ public class EstudianteCRUD extends AbstractCRUD {
     protected static final String RETRIEVE_CMD
             = "SELECT "
             + "id_estudiante, usuario_id, apellido1, apellido2, nombre, telefono, e_mail "
-            + "FROM eif209_2021_01.estudiante WHERE id_estudiante = ?; ";
+            + "FROM eif209_2021_01.estudiante WHERE usuario_id = ?; ";
     protected static final String UPDATE_CMD
             = "UPDATE eif209_2021_01.estudiante "
             + "SET apellido1 = ?, apellido2 = ?, nombre = ?, telefono = ?, e_mail = ? "

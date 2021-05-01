@@ -1,0 +1,60 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package modelo.beans.servicios;
+
+import cursolibres.db.dao.crud.AbstractCRUD;
+
+/**
+ *
+ * @author Angelo
+ */
+public class ProfesorCRUD extends AbstractCRUD{
+
+@Override
+    public String getListAllCmd() {
+        return LIST_CMD;
+    }
+
+    @Override
+    public String getAddCmd() {
+        return ADD_CMD;
+    }
+
+    @Override
+    public String getRetrieveCmd() {
+        return RETRIEVE_CMD;
+    }
+
+    @Override
+    public String getUpdateCmd() {
+        return UPDATE_CMD;
+    }
+
+    @Override
+    public String getDeleteCmd() {
+        return DELETE_CMD;
+    } 
+    
+    protected static final String LIST_CMD
+            = "SELECT "
+            + "id_profesor, usuario_id, apellido1, apellido2, nombre, telefono, e_mail "
+            + "FROM eif209_2021_01.profesor ORDER BY id_profesor; ";
+    protected static final String ADD_CMD
+            = "INSERT INTO eif209_2021_01.profesor "
+            + "(id_profesor, usuario_id, apellido1, apellido2, nombre, telefono, e_mail) "
+            + "VALUES (?, ?, ?, ?, ?, ?, ?); ";
+    protected static final String RETRIEVE_CMD
+            = "SELECT "
+            + "id_profesor, usuario_id, apellido1, apellido2, nombre, telefono, e_mail "
+            + "FROM eif209_2021_01.profesor WHERE usuario_id = ?; ";
+    protected static final String UPDATE_CMD
+            = "UPDATE eif209_2021_01.profesor "
+            + "SET apellido1 = ?, apellido2 = ?, nombre = ?, telefono = ?, e_mail = ? "
+            + "WHERE id_profesor = ?; ";
+    protected static final String DELETE_CMD
+            = "DELETE FROM eif209_2021_01.profesor "
+            + "WHERE id_profesor = ?; ";
+}

@@ -6,9 +6,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.beans.Estudiante;
-import modelo.dao.crud.EstudianteCRUD;
+import modelo.beans.servicios.EstudianteCRUD;
 import cursolibres.db.Database;
-import modelo.dao.crud.EstudianteCRUD;
+import modelo.beans.servicios.EstudianteCRUD;
 
 public class EstudianteDAO extends AbstractDAO<Integer, Estudiante> {
 

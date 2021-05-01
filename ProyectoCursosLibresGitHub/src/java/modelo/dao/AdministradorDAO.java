@@ -12,7 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.beans.Administrador;
 import modelo.beans.Curso;
-import modelo.dao.crud.AdministradorCRUD;
+import modelo.beans.servicios.AdministradorCRUD;
 
 /**
  *

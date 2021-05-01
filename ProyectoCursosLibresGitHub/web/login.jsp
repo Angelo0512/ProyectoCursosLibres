@@ -9,6 +9,9 @@
         <jsp:useBean id="user" scope="session" class="modelo.beans.Usuario">
             <jsp:setProperty name="user" property="id_usuario"/>
         </jsp:useBean>
+        
+        <%@ include file="header.jsp" %>
+        
         <div id="wrapper">
             <div id="contents">
                 <form action="Login" method="POST">
@@ -23,11 +26,6 @@
                 <nav>
                     <p>
                         No tienes una cuenta? <a href="registro.jsp">Regístrate</a>
-                    </p>
-                </nav>
-                <nav>
-                    <p style="text-align: center;">
-                        Regresar a la <a href="index.jsp">Pagina principal</a>
                     </p>
                 </nav>
             </footer>

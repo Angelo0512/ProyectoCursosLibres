@@ -9,27 +9,6 @@ body{
     overflow: hidden;
 }
 
-#menuHeader{
-    text-align: center;
-    color: white;
-    width: 75pt;
-    float: left;
-}
-
-#loginHeader{
-    text-align: center;
-    padding: 3px;
-    margin: 2px;
-    color: black;
-    width: 75pt;
-    float: right;
-}
-
-header {
-    background-color: white;
-    border-bottom: 2px solid black;
-}
-
 #contents{
     flex-direction: column;
     display: flex;

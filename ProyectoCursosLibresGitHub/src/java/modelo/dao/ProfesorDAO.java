@@ -6,7 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import modelo.beans.Profesor;
-import modelo.dao.crud.ProfesorCRUD;
+import modelo.beans.servicios.ProfesorCRUD;
 
 
 public class ProfesorDAO extends AbstractDAO<Integer, Profesor> {

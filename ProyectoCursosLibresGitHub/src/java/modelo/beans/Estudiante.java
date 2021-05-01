@@ -18,6 +18,34 @@ public class Estudiante implements Serializable{
         this.e_mail = e_mail;
     }
 
+    public void setId_estudiante(int id_estudiante) {
+        this.id_estudiante = id_estudiante;
+    }
+
+    public void setUsuario_id(String usuario_id) {
+        this.usuario_id = usuario_id;
+    }
+
+    public void setApellido1(String apellido1) {
+        this.apellido1 = apellido1;
+    }
+
+    public void setApellido2(String apellido2) {
+        this.apellido2 = apellido2;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+
+    public void setE_mail(String e_mail) {
+        this.e_mail = e_mail;
+    }
+
     public int getId_estudiante() {
         return id_estudiante;
     }

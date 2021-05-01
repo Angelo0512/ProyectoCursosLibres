@@ -11,39 +11,9 @@
             <jsp:setProperty name="g" property="*"></jsp:setProperty> 
         </jsp:useBean>
         <div id="wrapper">
-            <header style="overflow: hidden;">
-                <nav id="menuHeader">
-                    <p>
-                        <a href="index.jsp">Inicio</a>
-                    </p>
-                </nav>
-                <nav id="menuHeader">
-                    <p>
-                        <a href="index.jsp">Cursos</a>
-                    </p>
-                </nav>
-                <nav id="menuHeader">
-                    <p>
-                        <a href="grupo.jsp">Grupos</a>
-                    </p>
-                </nav>
-                <nav id="menuHeader">
-                    <p>
-                        <a href="index.jsp">Estudiantes</a>
-                    </p>
-                </nav>
-                <nav id="menuHeader">
-                    <p>
-                        <a href="index.jsp">Profesores</a>
-                    </p>
-                </nav>
-                <nav id="logoutHeader">
-                    <p>
-                        <!-- falta la refeencia -->
-                        <a>Cerrar Sesion</a>
-                    </p>
-                </nav>
-            </header>
+
+            <%@ include file="header.jsp" %>
+            
             <div id="contents">
                 <form method="GET" action="ServicioGrupo">
                     <table class="abrir grupo">

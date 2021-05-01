@@ -8,6 +8,9 @@
     <body>
         <jsp:useBean id="estudiantes" class="modelo.beans.ConjuntoEstudiantes" scope="application">
         </jsp:useBean>
+        
+        <%@ include file="header.jsp" %>
+        
         <div id="wrapper">
             <div id="contents">
                 <h1>Registro de estudiantes</h1>
@@ -106,11 +109,6 @@
                 <nav>
                     <p>
                         Ya tienes una cuenta? <a href="login.jsp">Iniciar Sesión</a>
-                    </p>
-                </nav>
-                <nav>
-                    <p style="text-align: center;">
-                        Regresar a la <a href="index.jsp">Pagina principal</a>
                     </p>
                 </nav>
             </footer>
