@@ -26,6 +26,10 @@ public class Grupo implements Serializable {
     public void setNum_grupo(int num_grupo) {
         this.num_grupo = num_grupo;
     }
+    
+    public static void setNum_grupo(Grupo instancia, int num_grupo) {
+        instancia.setNum_grupo(num_grupo);
+    }
 
     public int getCurso_id() {
         return curso_id;
@@ -34,6 +38,10 @@ public class Grupo implements Serializable {
     public void setCurso_id(int curso_id) {
         this.curso_id = curso_id;
     }
+    
+    public static void setCurso_id(Grupo instancia, int curso_id) {
+        instancia.setCurso_id(curso_id);
+    }
 
     public int getProfesor_id() {
         return profesor_id;
@@ -41,6 +49,10 @@ public class Grupo implements Serializable {
 
     public void setProfesor_id(int profesor_id) {
         this.profesor_id = profesor_id;
+    }
+  
+    public static void setProfesor_id(Grupo instancia, int profesor_id) {
+        instancia.setProfesor_id(profesor_id);
     }
 
     @Override
@@ -58,11 +70,12 @@ public class Grupo implements Serializable {
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getProfesor_id()));
 
         r.append(String.format(
-                "\t\t\t\t<td><form action='%s'><button name='grupo' value='%d'>%s</button></td></form>\n",
-                "",
+                "\t\t\t\t<td><form method= '%s' action='%s'><button name='grupo' value='%d'>%s</button></td></form>\n",
+                "GET",
+                "ServicioMatricula",
                 getNum_grupo(),
                 "Matricular"));
-
+        //r.append("\t\t\t\t<%!\n" + "String id_usuario;\n" + "%>\n" +"<%\n" + "id_usuario = request.getParameter(\"id_usuario\");\n" + "%>");
         r.append("\t\t\t</tr>\n");
         return r.toString();
     }

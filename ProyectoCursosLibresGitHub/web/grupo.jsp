@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<%@taglib prefix="ej" uri="/WEB-INF/tlds/ejemplo" %>
 <html>
     <head>
         <title>Grupos</title>
@@ -9,6 +10,9 @@
     <body>
         <jsp:useBean id="grupo" class="modelo.beans.ConjuntoGrupos" scope="application">
             <jsp:setProperty name="gr" property="*"></jsp:setProperty> 
+        </jsp:useBean>
+        <jsp:useBean id="user" class="modelo.beans.Usuario" scope="session">
+            <jsp:setProperty name="user" property="id_usuario" value="${user.id_usuario}"></jsp:setProperty>
         </jsp:useBean>
         <div id="wrapper">
             <header style="overflow: hidden;">
@@ -45,7 +49,6 @@
                 </nav>
             </header>
             <div id="contents">
-                <form method="GET" action="ServicioGrupo">
                     <table class="busqueda grupo">
                         <tbody>
                             <tr>
@@ -68,10 +71,9 @@
                             </tr>
                         </tbody>
                     </table>
-                   <div class="d2columnas">
+                   <div class="d2columnas">                      
                         ${grupo.tabla}
                     </div>
-                </form>
             </div>
             <footer></footer>
         </div>

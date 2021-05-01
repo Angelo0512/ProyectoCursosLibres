@@ -1,8 +1,6 @@
 package modelo.beans.servicios;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.Optional;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -53,6 +51,7 @@ public class ServicioLogin extends HttpServlet {
                 s.setAttribute("estudiante", user);
                 request.getRequestDispatcher("inicioEstudiante.jsp").
                         forward(request, response);
+                 request.getSession().setAttribute("user", user);
             }
         } catch (IOException | ServletException e) {
             request.setAttribute("error", "Credenciales incorrectas..");

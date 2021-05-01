@@ -6,6 +6,9 @@
         <link href="CSS/login.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
+        <jsp:useBean id="user" scope="session" class="modelo.beans.Usuario">
+            <jsp:setProperty name="user" property="id_usuario"/>
+        </jsp:useBean>
         <div id="wrapper">
             <div id="contents">
                 <form action="Login" method="POST">
