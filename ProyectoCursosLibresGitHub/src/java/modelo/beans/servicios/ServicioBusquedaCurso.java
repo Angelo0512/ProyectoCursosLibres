@@ -26,11 +26,15 @@ public class ServicioBusquedaCurso extends HttpServlet {
         String tematica = request.getParameter("tematica");
         
         ConjuntoCursos cursos = (ConjuntoCursos) getServletContext().getAttribute("cursos");
+        String cursoId = null;
+        cursoId = request.getParameter("grupos");
         Curso curso = null;
-        try {
-            curso = cursos.retrieve(Integer.parseInt(request.getParameter("grupos")));
-        } catch (SQLException ex) {
-            Logger.getLogger(ServicioBusquedaCurso.class.getName()).log(Level.SEVERE, null, ex);
+        if (cursoId != null){
+            try {
+                curso = cursos.retrieve(Integer.parseInt(cursoId));
+            } catch (SQLException ex) {
+                Logger.getLogger(ServicioBusquedaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
         
