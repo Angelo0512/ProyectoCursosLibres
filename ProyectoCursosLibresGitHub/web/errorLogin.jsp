@@ -7,9 +7,7 @@
     </head>
     <body>
         <jsp:useBean id="error" scope="request" type="java.lang.String" class="java.lang.String" />
-
         <%@ include file="header.jsp" %>
-
         <div id="wrapper">   
             <div id ="contents">   
                 <div style="color:red; font-size: 16px;"> <%=error%></div>

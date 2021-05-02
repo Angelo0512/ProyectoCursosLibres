@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html>
     <head>
         <title>Abrir grupo</title>
@@ -11,9 +9,7 @@
             <jsp:setProperty name="g" property="*"></jsp:setProperty> 
         </jsp:useBean>
         <div id="wrapper">
-
-            <%@ include file="header.jsp" %>
-            
+            <%@ include file="header.jsp" %>        
             <div id="contents">
                 <form method="GET" action="ServicioGrupo">
                     <table class="abrir grupo">

@@ -1,6 +1,5 @@
 package modelo.beans.servicios;
 
-import java.sql.Timestamp;
 import java.util.Date;
 import cursolibres.db.Database;
 import modelo.beans.ConjuntoEstudiantes;
@@ -16,6 +15,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.beans.ConjuntoUsuarios;
 import modelo.beans.Usuario;
 
@@ -32,7 +32,8 @@ public class ServicioEstudiante extends HttpServlet {
         System.out.println("Servlet ServicioEstudiante..");
 
         try {
-
+            
+            HttpSession s = request.getSession(true);
             Usuario u = new Usuario(
                     request.getParameter("id"),
                     3,
@@ -58,7 +59,8 @@ public class ServicioEstudiante extends HttpServlet {
             estudiantes.add(e);
             System.out.println(estudiantes);
 
-            response.sendRedirect("login.jsp");
+            s.setAttribute("generacionClave", u);
+            response.sendRedirect("visualizarClave.jsp");
 
         } catch (IOException | NumberFormatException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());

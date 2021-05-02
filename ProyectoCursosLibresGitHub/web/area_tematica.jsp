@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <html>
     <head>
         <title>Abrir area tematica</title>
@@ -10,10 +8,8 @@
         <jsp:useBean id="areasTematicas" class="modelo.beans.ConjuntoAreasTematicas" scope="application">
             <jsp:setProperty name="at" property="*"></jsp:setProperty> 
         </jsp:useBean>
-        <div id="wrapper">
-            
-            <%@ include file="header.jsp" %>
-            
+        <div id="wrapper">   
+            <%@ include file="header.jsp" %>          
             <div id="contents">
                 <form method="GET" action="ServicioAreaTematica">
                     <table class="abrir area tematica">

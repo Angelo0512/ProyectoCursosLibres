@@ -1,5 +1,3 @@
-<!DOCTYPE html>
-
 <%@taglib prefix="ej" uri="/WEB-INF/tlds/ejemplo" %>
 <html>
     <head>
@@ -15,35 +13,33 @@
             <jsp:setProperty name="user" property="id_usuario" value="${user.id_usuario}"></jsp:setProperty>
         </jsp:useBean>
         <div id="wrapper">
-
-            <%@ include file="header.jsp" %>
-            
+            <%@ include file="header.jsp" %>            
             <div id="contents">
-                    <table class="busqueda grupo">
-                        <tbody>
-                            <tr>
-                                <td class="etiqueta">Id del grupo:&nbsp;</td>
-                                <td>  
-                                    <input class="inputField" type="text" name="num_grupo" id="num_grupo" size="25" placeholder="(Id del grupo)" required/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="2" class="botones">
-                                    <p style="text-align: center;">
-                                        <button type="submit">Buscar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <!<!-- Verificar que el input de id no este vacio o que se haya seleccionado un grupo -->
-                                        <button type="reset">Eliminar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                       <a href="abrir_grupo.jsp">Abrir grupo</a>&nbsp;
-                                       <a href="carga_asignada.jsp">Carga asignada de profesores</a>&nbsp;
-                                       <a href="area_tematica.jsp">Area tematica</a>
-                                    </p>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                   <div class="d2columnas">                      
-                        ${grupo.tabla}
-                    </div>
+                <table class="busqueda grupo">
+                    <tbody>
+                        <tr>
+                            <td class="etiqueta">Id del grupo:&nbsp;</td>
+                            <td>  
+                                <input class="inputField" type="text" name="num_grupo" id="num_grupo" size="25" placeholder="(Id del grupo)" required/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" class="botones">
+                                <p style="text-align: center;">
+                                    <button type="submit">Buscar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <!<!-- Verificar que el input de id no este vacio o que se haya seleccionado un grupo -->
+                                    <button type="reset">Eliminar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <a href="abrir_grupo.jsp">Abrir grupo</a>&nbsp;
+                                    <a href="carga_asignada.jsp">Carga asignada de profesores</a>&nbsp;
+                                    <a href="area_tematica.jsp">Area tematica</a>
+                                </p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="d2columnas">                      
+                    ${grupo.tabla}
+                </div>
             </div>
             <footer></footer>
         </div>

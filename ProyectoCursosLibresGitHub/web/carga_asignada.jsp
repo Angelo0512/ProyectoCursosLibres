@@ -1,8 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="ej" uri="/WEB-INF/tlds/ejemplo" %>
 
-<!DOCTYPE html>
-
 <html>
     <head>
         <title>Carga asignada</title>
@@ -16,9 +14,7 @@
             <jsp:setProperty name="user" property="id_usuario" value="${user.id_usuario}"></jsp:setProperty>
         </jsp:useBean>
         <div id="wrapper">
-
-            <%@ include file="header.jsp" %>
-            
+            <%@ include file="header.jsp" %>            
             <div id="contents">
                 <form method="GET" action="ServicioGrupo">
                     <table class="busqueda grupo">
