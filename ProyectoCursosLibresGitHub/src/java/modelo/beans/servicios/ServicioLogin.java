@@ -47,18 +47,21 @@ public class ServicioLogin extends HttpServlet {
                     Administrador admin = new Administrador();
                     admin = servicioAdmin.obtenerAdministrador(id_usuario);
                     s.setAttribute("administrador", admin);
+                    s.setAttribute("user", user);
                     request.getRequestDispatcher("inicioAdministrador.jsp").
                             forward(request, response);
                 } else if (user.getRol_id() == 2) {
                     Profesor profe = new Profesor();
                     profe = servicioProfe.obtenerProfesor(id_usuario);
                     s.setAttribute("profesor", profe);
+                    s.setAttribute("user", user);
                     request.getRequestDispatcher("inicioProfesor.jsp").
                             forward(request, response);
                 } else if (user.getRol_id() == 3) {
                     Estudiante est = new Estudiante();
                     est = servicioEst.obtenerEstudiante(id_usuario);
                     s.setAttribute("estudiante", est);
+                    s.setAttribute("user", user);
                     request.getRequestDispatcher("inicioEstudiante.jsp").
                             forward(request, response);
                 }

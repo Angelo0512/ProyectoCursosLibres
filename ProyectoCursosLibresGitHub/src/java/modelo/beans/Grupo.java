@@ -70,7 +70,7 @@ public class Grupo implements Serializable {
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getProfesor_id()));
 
         r.append(String.format(
-                "\t\t\t\t<td><form method= '%s' action='%s'><button name='grupo' value='%d'>%s</button></td></form>\n",
+                "\t\t\t\t<td><form method='%s' action='%s'><button name='grupo' value='%d'>%s</button></form></td>\n",
                 "GET",
                 "ServicioMatricula",
                 getNum_grupo(),

@@ -2,13 +2,18 @@ package modelo.beans.servicios;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import modelo.beans.ConjuntoCursos;
+import modelo.beans.Curso;
 
 @WebServlet(name = "ServicioBusquedaCurso", urlPatterns = {"/ServicioBusquedaCurso"})
 public class ServicioBusquedaCurso extends HttpServlet {
@@ -19,13 +24,29 @@ public class ServicioBusquedaCurso extends HttpServlet {
 
         String nombre = request.getParameter("descripcion");
         String tematica = request.getParameter("tematica");
-        if (nombre != "") {
+        
+        ConjuntoCursos cursos = (ConjuntoCursos) getServletContext().getAttribute("cursos");
+        Curso curso = null;
+        try {
+            curso = cursos.retrieve(Integer.parseInt(request.getParameter("grupos")));
+        } catch (SQLException ex) {
+            Logger.getLogger(ServicioBusquedaCurso.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        if (nombre != "" && nombre !=null) {
             servicio.obtenerCursoNombre(nombre)
                     .ifPresent(c -> request.setAttribute("busquedaCurso", c));
-        } else if (tematica != "") {
+        } else if (tematica != "" && tematica != null) {
             request.setAttribute("busquedaCursoTematica",servicio.obtenerListaCursosTematica(tematica));
         }
 
+        else if(curso != null){
+            getServletContext().setAttribute("cursoVer", curso);
+            request.getRequestDispatcher("ver_grupos_curso.jsp").
+                            forward(request, response);
+        }
+            
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
 
