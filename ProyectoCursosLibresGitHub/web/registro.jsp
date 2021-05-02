@@ -8,9 +8,11 @@
     <body>
         <jsp:useBean id="estudiantes" class="modelo.beans.ConjuntoEstudiantes" scope="application">
         </jsp:useBean>
-        
+        <jsp:useBean id="usuarios" class="modelo.beans.ConjuntoUsuarios" scope="application">
+        </jsp:useBean>
+
         <%@ include file="header.jsp" %>
-        
+
         <div id="wrapper">
             <div id="contents">
                 <h1>Registro de estudiantes</h1>
@@ -24,19 +26,8 @@
                                     </p>
                                 </td>
                                 <td>
-                                    <input class="inputField" type="text" name="id"
-                                           placeholder="(digite la identificación)"/>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>
-                                        <label>Identificación:&nbsp;</label>
-                                    </p>
-                                </td>
-                                <td>
-                                    <input class="inputField" type="text" name="usuario_id"
-                                           placeholder="(digite la identificación)"/>
+                                    <input class="inputField" type="number" name="id"
+                                           placeholder="(digite la identificación)" min=100000000 max=999999999 required/>
                                 </td>
                             </tr>
                             <tr>
@@ -47,7 +38,7 @@
                                 </td>
                                 <td>
                                     <input class="inputField" type="text" name="nombre"
-                                           placeholder="(nombre)"/>
+                                           placeholder="(nombre)" required/>
                                 </td>
                             </tr>
                             <tr>
@@ -58,7 +49,7 @@
                                 </td>
                                 <td>
                                     <input class="inputField" type="text" name="apellido1"
-                                           placeholder="(primer apellido)"/>
+                                           placeholder="(primer apellido)" required/>
                                 </td>
                             </tr>
                             <tr>
@@ -69,7 +60,7 @@
                                 </td>
                                 <td>
                                     <input class="inputField" type="text" name="apellido2"
-                                           placeholder="(segundo apellido)"/>
+                                           placeholder="(segundo apellido)" required/>
                                 </td>
                             </tr>
                             <tr>
@@ -80,7 +71,7 @@
                                 </td>
                                 <td>
                                     <input class="inputField" type="text" name="telefono"
-                                           placeholder="(telefono)"/>
+                                           placeholder="(telefono)" required/>
                                 </td>
                             </tr>
                             <tr>
@@ -91,7 +82,7 @@
                                 </td>
                                 <td>
                                     <input class="inputField" type="text" name="email"
-                                           placeholder="(correo electronico)"/>
+                                           placeholder="(correo electronico)" required/>
                                 </td>
                             </tr>
                             <tr>

@@ -5,22 +5,23 @@
     <head>
         <title>Error</title>
         <meta charset="UTF-8">
-        <link href="css/default.css" rel="stylesheet" type="text/css"/>
+        
+        <link href="CSS/registro.css" rel="stylesheet" type="text/css"/>
+        
     </head>
     <body>
-        <div id="wrapper">
 
-            <%@ include file="header.jsp" %>
-            
-            <nav>
-                <p>
-                    <a href="index.jsp">Ir a la pagina principal</a>
-                </p>
-            </nav>
+        <%@ include file="header.jsp" %>
+
+        <div id="wrapper">            
             <div id="contents">
                 <p class="error">
                     Ocurrió un error al procesar los datos del formulario.
                 </p>
+                <p style="text-align: center;">
+                    <a href="registro.jsp">Reintentar</a>
+                </p>
+                
             </div>
             <footer></footer>
         </div>
