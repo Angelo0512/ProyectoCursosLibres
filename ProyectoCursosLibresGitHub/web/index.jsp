@@ -12,6 +12,8 @@
     <body>
         <jsp:useBean id="cursos" class="modelo.beans.ConjuntoCursos" scope="application">
         </jsp:useBean>
+        <jsp:useBean id="cursoVer" class="modelo.beans.Curso" scope="application">            
+        </jsp:useBean>
         <div id="wrapper">
             
             <%@ include file="header.jsp" %>

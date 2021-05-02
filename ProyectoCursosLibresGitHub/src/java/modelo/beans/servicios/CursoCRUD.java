@@ -50,7 +50,7 @@ public class CursoCRUD extends AbstractCRUD {
     protected static final String RETRIEVE_CMD
             = "SELECT "
             + "id_curso, descripcion, area_tematica_id "
-            + "FROM eif209_2021_01.curso WHERE descripcion= ?; ";
+            + "FROM eif209_2021_01.curso WHERE id_curso= ?; ";
         protected static final String RETRIEVE_CMD_TEM
             = "SELECT "
             + "id_curso, descripcion, area_tematica_id "

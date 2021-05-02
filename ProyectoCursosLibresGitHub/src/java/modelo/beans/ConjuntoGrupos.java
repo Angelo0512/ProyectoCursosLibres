@@ -127,9 +127,34 @@ public class ConjuntoGrupos implements Serializable {
         return r.toString();
     }    
     
-   /* public String getTablaCarga() { 
-        eturn toStringHTMLCarga(321);
-    }*/
+    public String toStringHTMLCurso(int curso_id) {
+        
+        StringBuilder r = new StringBuilder();
+        r.append("\t<table class=\"tablaGrupos\">\n");
+        r.append("\t\t<caption>GRUPOS</caption>");
+        r.append("\t\t<thead>\n");
+        r.append("\t\t\t<tr>\n");
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Numero Grupo"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Curso"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Profesor"));
+        r.append("\t\t\t<tr>\n");
+        r.append("\t\t</thead>\n");
+
+        r.append("\t\t<tbody>\n");
+        List<Grupo> t = getListaGrupos();
+        for (Grupo c : t) {
+            if (c.getCurso_id()== curso_id){
+                r.append(c.toStringHTMLCarga());
+            }
+        }
+        r.append("\t\t</tbody>\n");
+
+        r.append("\t\t<tfoot></tfoot>\n");
+        r.append("\t</table>\n");
+
+        return r.toString();
+    }  
+   
     //muestra la tabla de carga de los profesores
     public String getTablaCarga(int id) { 
         return toStringHTMLCarga(id);
@@ -137,6 +162,15 @@ public class ConjuntoGrupos implements Serializable {
      
     public static String getTablaCarga(ConjuntoGrupos instancia, String id) {
         return instancia.getTablaCarga(Integer.parseInt(id));
+    }
+    
+    //muestra la tabla de grupos de un curso
+    public String getTablaCurso(int id) { 
+        return toStringHTMLCurso(id);
+    }
+     
+    public static String getTablaCurso(ConjuntoGrupos instancia, String id) {
+        return instancia.getTablaCurso(Integer.parseInt(id));
     }
 
     
