@@ -86,6 +86,14 @@ public class Grupo implements Serializable {
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getNum_grupo()));
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getCurso_id()));
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getProfesor_id()));
+        
+        r.append(String.format(
+                "\t\t\t\t<td><form method='%s' action='%s'><button name='grupoModificar' value='%d'>%s</button></form></td>\n",
+                "GET",
+                "ServicioRegistro",
+                getNum_grupo(),
+                "Modificar"));
+        r.append("\t\t\t</tr>\n");
         r.append("\t\t\t</tr>\n");
         return r.toString();
     }

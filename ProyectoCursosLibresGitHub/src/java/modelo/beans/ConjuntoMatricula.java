@@ -55,6 +55,15 @@ public class ConjuntoMatricula implements Serializable{
         }
     }
     
+    public Matricula getWithGroup(int id, int num) throws SQLException, IOException{
+        try{
+        return matriculas.retrieveWithGroup(id, num);
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+            return new Matricula();
+        }
+    }
+    
     public void update(int id, Matricula mat) throws SQLException, IOException{
         matriculas.update(id, mat);
     }
@@ -109,8 +118,45 @@ public class ConjuntoMatricula implements Serializable{
         return r.toString();
     }
 
+    public String toStringHTMLGrupos(int grupo_id) {
+        
+        StringBuilder r = new StringBuilder();
+        r.append("\t<table class=\"tablaGrupos\">\n");
+        r.append("\t\t<caption>ESTUDIANTES MATRICULADOS</caption>");
+        r.append("\t\t<thead>\n");
+        r.append("\t\t\t<tr>\n");
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Estudiante"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Numero de grupo"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Nota"));     
+        r.append("\t\t\t<tr>\n");
+        r.append("\t\t</thead>\n");
+
+        r.append("\t\t<tbody>\n");
+        List<Matricula> lm = getListaMatriculas();
+        for (Matricula m : lm) {
+            if (m.getGrupo_num() == grupo_id){
+                r.append(m.toStringHTMLGrupos());
+            }
+        }
+        r.append("\t\t</tbody>\n");
+
+        r.append("\t\t<tfoot></tfoot>\n");
+        r.append("\t</table>\n");
+
+        return r.toString();
+    }
+    
     public String getTabla() {
         return toStringHTML();
+    }
+    
+    //muestra la tabla de estudiantes y notas del grupo
+    public String getTablaGrupos(int id_grupo) { 
+        return toStringHTMLGrupos(id_grupo);
+    }
+     
+    public static String getTablaGrupos(ConjuntoMatricula instancia, String id_grupo) {
+        return instancia.getTablaGrupos(Integer.parseInt(id_grupo));
     }
     
     @XmlTransient

@@ -87,6 +87,18 @@ public class Matricula implements Serializable{
         return r.toString();
     }
     
+    public String toStringHTMLGrupos() {
+        StringBuilder r = new StringBuilder();
+        r.append("\t\t\t<tr>\n");
+
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getEstudiante_id()));
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getGrupo_num()));
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getNota()));
+
+        r.append("\t\t\t</tr>\n");
+        return r.toString();
+    }
+    
     private int estudiante_id;
     private int grupo_num;
     private int curso_id;
