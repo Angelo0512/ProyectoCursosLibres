@@ -26,6 +26,7 @@
                                 <td> 
                                     <input class="inputField" type="text" name="tematica" id="tematica" size="25" placeholder="(tematica)"/>
                                 </td>
+                        
                             </tr>
                             <tr>
                                 <td colspan="2" class="botones">

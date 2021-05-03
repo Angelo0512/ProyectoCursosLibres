@@ -14,6 +14,7 @@
 
         <% if (estudiante != null) {%>
         <li><a href="grupo.jsp">Grupos</a></li>
+        <li><a href="historial.jsp">Historial</a></li>
         <li style="float: right"> <a href="Logout">Salir</a></li>
         <li style="float: right"> <p style="color: white; font-size: 14px; margin-right: 10px;"><%=estudiante.getNombre()%> <%=estudiante.getApellido1()%> - <%=estudiante.getUsuario_id()%></p></li>
 

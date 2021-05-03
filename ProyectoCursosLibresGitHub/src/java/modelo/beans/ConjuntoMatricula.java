@@ -5,10 +5,16 @@
  */
 package modelo.beans;
 
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Paragraph;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.ArrayList;
+
 import java.util.List;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -35,6 +41,25 @@ public class ConjuntoMatricula implements Serializable{
     public List<Matricula> getListaMatriculas() {
         try {
             return matriculas.listAll();
+        } catch (IOException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+            return new ArrayList<>();
+        }
+    }
+    
+    public List<Matricula> getListaMatriculaIdEstudiate(int id){
+        try{
+            List<Matricula> listAux =  matriculas.listAll();
+            List<Matricula> list = new ArrayList<>();
+            
+            for (Matricula listAux1 : listAux) {
+                if(listAux1.getEstudiante_id() == id){
+                    list.add(listAux1);
+                }
+            }
+            
+            return list;
+                
         } catch (IOException | SQLException ex) {
             System.err.printf("Excepción: '%s'%n", ex.getMessage());
             return new ArrayList<>();

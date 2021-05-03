@@ -48,7 +48,7 @@
                         </tr>
                         <%}%>
                         <tr>
-                            <td>
+                            <td colspan="5">
                                 <input type="hidden" value="<% estudiante.getId_estudiante(); %>" name="idEst">
                                 <input type="submit" value="Descargar PDF">
                             </td>

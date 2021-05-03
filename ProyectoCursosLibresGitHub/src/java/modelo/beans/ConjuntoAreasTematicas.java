@@ -92,7 +92,6 @@ public class ConjuntoAreasTematicas {
         r.append("\t\t<tbody>\n");
         List<Area_tematica> t = getListaAreasTematicas();
         for (Area_tematica c : t) {
-            
             r.append(c.toStringHTML());
         }
         r.append("\t\t</tbody>\n");
