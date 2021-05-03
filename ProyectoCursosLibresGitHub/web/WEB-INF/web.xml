@@ -4,9 +4,17 @@
         <servlet-name>ServicioHistorial</servlet-name>
         <servlet-class>modelo.beans.servicios.ServicioHistorial</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ServicioBusquedaProfesor</servlet-name>
+        <servlet-class>modelo.beans.servicios.ServicioBusquedaProfesor</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ServicioHistorial</servlet-name>
         <url-pattern>/ServicioHistorial</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ServicioBusquedaProfesor</servlet-name>
+        <url-pattern>/ServicioBusquedaProfesor</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

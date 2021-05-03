@@ -22,7 +22,7 @@
         <% if (administrador != null) {%>
         <li><a href="index.jsp">Cursos</a></li>
         <li><a href="grupo.jsp">Grupos</a></li>
-        <li><a href="index.jsp">Profesores</a></li>
+        <li><a href="profesor.jsp">Profesores</a></li>
         <li style="float: right"> <a href="Logout">Salir</a></li>
         <li style="float: right"> <p style="color: white; font-size: 14px; margin-right: 10px;"><%=administrador.getNombre()%> <%=administrador.getApellido1()%> - <%=administrador.getUsuario_id()%></p></li>
 

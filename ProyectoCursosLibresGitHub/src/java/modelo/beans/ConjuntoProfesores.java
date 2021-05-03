@@ -83,7 +83,7 @@ public class ConjuntoProfesores implements Serializable{
     public String toStringHTML() {
         
         StringBuilder r = new StringBuilder();
-        r.append("\t<table class=\"tablaProfesores\">\n");
+        r.append("\t<table class=\"tablaProfesor\">\n");
         r.append("\t\t<caption>PROFESORES</caption>");
         r.append("\t\t<thead>\n");
         r.append("\t\t\t<tr>\n");

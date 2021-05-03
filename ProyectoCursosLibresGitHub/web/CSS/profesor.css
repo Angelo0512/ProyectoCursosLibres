@@ -1,0 +1,67 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 03/05/2021, 01:36:17 PM
+    Author     : Angelo
+*/
+
+body{
+    font-family: sans-serif;
+    background-color: #67c1da;
+    margin: 0;
+}
+
+#wrapper {
+    flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+}
+
+#contents{
+    border: 1px solid gainsboro;
+    border-radius: 1em;
+    padding: 30px 40px 40px 40px;
+    margin: 50px 400px;
+    background-color: rgba(255,255,255,0.99);
+}
+
+.tablaProfesor caption{
+    background-color: #505453;
+    padding-bottom: 5px;
+    padding-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    color: white;
+}
+
+.tablaProfesor {
+    border: none;
+    border-bottom: 2px solid darkslategrey;
+    border-collapse: collapse;
+    font-size: smaller;
+}
+
+.tablaProfesor th,
+.tablaProfesor td {
+    border: none;
+    padding: 10px 25px 10px 25px;
+}
+
+.tablaProfesor tbody tr:nth-child(odd) {
+    background-color: #ededeb;
+}
+
+.tablaProfesor th {
+    background-color: #505453;
+    border: none;
+    color: white;
+}
+
+.tablaProfesor td {
+}

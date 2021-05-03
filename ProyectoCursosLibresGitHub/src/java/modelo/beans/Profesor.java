@@ -91,12 +91,12 @@ public class Profesor implements Serializable {
         r.append("\t\t\t<tr>\n");
 
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getId_profesor()));
-        r.append(String.format("\t\t\t\t<td>&s</td>\n", getUsuario_id()));
-        r.append(String.format("\t\t\t\t<td>&s</td>\n", getApellido1()));
-        r.append(String.format("\t\t\t\t<td>&s</td>\n", getApellido2()));
-        r.append(String.format("\t\t\t\t<td>&s</td>\n", getNombre()));
-        r.append(String.format("\t\t\t\t<td>&s</td>\n", getTelefono()));
-        r.append(String.format("\t\t\t\t<td>&s</td>\n", getE_mail()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getUsuario_id()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getApellido1()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getApellido2()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getNombre()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getTelefono()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getE_mail()));
 
         r.append("\t\t\t</tr>\n");
         return r.toString();

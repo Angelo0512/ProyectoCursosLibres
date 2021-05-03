@@ -12,8 +12,9 @@
         <jsp:useBean id="user" class="modelo.beans.Usuario" scope="session">
             <jsp:setProperty name="user" property="id_usuario" value="${user.id_usuario}"></jsp:setProperty>
         </jsp:useBean>
-        <div id="wrapper">
-            <%@ include file="header.jsp" %>            
+        
+        <%@ include file="header.jsp" %>
+        <div id="wrapper">         
             <div id="contents">
                 <table class="busqueda grupo">
                     <tbody>
