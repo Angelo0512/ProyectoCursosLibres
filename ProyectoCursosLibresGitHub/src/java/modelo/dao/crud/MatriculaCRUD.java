@@ -50,11 +50,11 @@ public class MatriculaCRUD extends AbstractCRUD{
     protected static final String RETRIEVE_CMD
             = "SELECT "
             + "estudiante_id, grupo_num, curso_id, estado_id, nota "
-            + "FROM eif209_2021_01.matricula WHERE estudiante_id = ?; ";
+            + "FROM eif209_2021_01.matricula WHERE estudiante_id = ? and grupo_num = ?; ";
     protected static final String UPDATE_CMD
             = "UPDATE eif209_2021_01.matricula "
             + "SET grupo_num = ?, curso_id = ?, estado_id = ?, nota = ? "
-            + "WHERE estudiante_id = ?; ";
+            + "WHERE estudiante_id = ? and grupo_num = ? and curso_id = ?; ";
     protected static final String DELETE_CMD
             = "DELETE FROM eif209_2021_01.matricula "
             + "WHERE estudiante_id = ?; ";

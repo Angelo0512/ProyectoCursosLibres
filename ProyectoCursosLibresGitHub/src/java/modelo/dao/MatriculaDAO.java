@@ -1,12 +1,13 @@
 package modelo.dao;
 
-import modelo.beans.Curso;
+import cursolibres.db.Database;
 import cursolibres.db.dao.AbstractDAO;
 import cursolibres.db.dao.crud.AbstractCRUD;
+import java.io.IOException;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import cursolibres.db.Database;
 import modelo.beans.Matricula;
 import modelo.dao.crud.MatriculaCRUD;
 
@@ -52,5 +53,25 @@ public class MatriculaDAO extends AbstractDAO<Integer, Matricula> {
         stm.setInt(3, m.getEstado_id());
         stm.setInt(4, m.getNota());
         stm.setInt(5, id);
+        stm.setInt(6, m.getGrupo_num());
+        stm.setInt(7, m.getCurso_id());
+    }
+    
+        public Matricula retrieveWithGroup(int id, int num) throws SQLException, IOException {
+        Matricula m = null;
+        try (Connection cnx = Database.getInstance().getConnection();
+                PreparedStatement stm = cnx.prepareStatement(getCRUD().getRetrieveCmd())) {
+            stm.clearParameters();
+            stm.setObject(1, id);
+            stm.setObject(2, num);
+            try (ResultSet rs = stm.executeQuery()) {
+                if (rs.next()) {
+                    m = getRecord(rs);
+                } else {
+                    throw new IllegalArgumentException();
+                }
+            }
+        }
+        return m;
     }
 }

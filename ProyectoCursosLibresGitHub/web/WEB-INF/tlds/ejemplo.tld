@@ -20,4 +20,11 @@
             java.lang.String getTablaCurso(modelo.beans.ConjuntoGrupos, java.lang.String)
         </function-signature>
     </function>
+    <function>
+        <name>getTablaGrupos</name>
+        <function-class>modelo.beans.ConjuntoMatricula</function-class>
+        <function-signature>
+            java.lang.String getTablaGrupos(modelo.beans.ConjuntoMatricula, java.lang.String)
+        </function-signature>
+    </function>
 </taglib>

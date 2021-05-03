@@ -109,6 +109,7 @@ public class ConjuntoGrupos implements Serializable {
         r.append(String.format("\t\t\t\t<th>%s</th>\n", "Numero Grupo"));
         r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Curso"));
         r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Profesor"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Modificar nota"));  
         r.append("\t\t\t<tr>\n");
         r.append("\t\t</thead>\n");
 
