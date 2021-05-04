@@ -57,8 +57,6 @@ public class ServicioRegistro extends HttpServlet {
         }
     }
 
-    private final ServicioCurso servicio = new ServicioCurso();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {

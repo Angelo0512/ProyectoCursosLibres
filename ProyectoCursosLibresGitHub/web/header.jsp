@@ -20,7 +20,7 @@
 
         <% }%>
         <% if (administrador != null) {%>
-        <li><a href="index.jsp">Cursos</a></li>
+        <li><a href="inicioAdministrador.jsp">Cursos</a></li>
         <li><a href="grupo.jsp">Grupos</a></li>
         <li><a href="profesor.jsp">Profesores</a></li>
         <li style="float: right"> <a href="Logout">Salir</a></li>

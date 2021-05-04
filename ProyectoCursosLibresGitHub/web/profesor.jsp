@@ -15,8 +15,8 @@
     <body>
         <jsp:useBean id="profesores" class="modelo.beans.ConjuntoProfesores" scope="application">
         </jsp:useBean>
-        <div id="wrapper">
-            <%@ include file="header.jsp" %>
+        <%@ include file="header.jsp" %>
+        <div id="wrapper">            
             <div id="contents">
                 <form method="POST" action="ServicioBusquedaProfesor">
                     <table class="busqueda">

@@ -9,16 +9,16 @@
     <body>
         <jsp:useBean id="cursos" class="modelo.beans.ConjuntoCursos" scope="application">
         </jsp:useBean>
-        <div id="wrapper">         
-            <%@ include file="header.jsp" %>          
+        <%@ include file="header.jsp" %> 
+        <div id="wrapper">       
             <div id="contents">
                 <form method="GET" action="ServicioBusquedaCurso">
                     <table class="busqueda">
-                        <tbody>
+                        <tbody>                            
                             <tr>
                                 <td class="etiqueta">Nombre:&nbsp;</td>
                                 <td>  
-                                    <input class="inputField" type="text" name="descripcion" id="descripcion" size="25" placeholder="(nombre)"/>
+                                    <input class="inputField" type="text" name="descripcion" id="descripcion" size="25" placeholder="(descripcion)"/>
                                 </td>
                             </tr>
                             <tr>
@@ -32,7 +32,7 @@
                                 <td colspan="2" class="botones">
                                     <p style="text-align: center;">
                                         <button type="submit">Buscar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <button type="reset">Borrar</button>&nbsp;
+                                        <a href="crearEditarCurso.jsp">Crear o editar un curso</a>&nbsp;
                                     </p>
                                 </td>
                             </tr>

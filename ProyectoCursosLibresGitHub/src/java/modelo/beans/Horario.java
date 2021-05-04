@@ -75,11 +75,32 @@ public class Horario implements Serializable{
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getSeq()));
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getGrupo_num()));
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getCurso_id()));
-        r.append(String.format("\t\t\t\t<td>%d</td>\n", getDia()));
+        r.append(String.format("\t\t\t\t<td>%s</td>\n", getDiaString(getDia())));
         r.append(String.format("\t\t\t\t<td>%d</td>\n", getHora()));
         
         r.append("\t\t\t</tr>\n");
         return r.toString();
+    }
+    
+    private String getDiaString(int dia){
+        switch(dia){
+            case 1:
+                return "Domingo";
+            case 2:
+                return "Lunes";
+            case 3:
+                return "Martes";
+            case 4:
+                return "Miercoles";
+            case 5:
+                return "Jueves";
+            case 6:
+                return "Viernes";
+            case 7:
+                return "Sabado";             
+        }
+        
+        return "error";
     }
     
     private int seq;

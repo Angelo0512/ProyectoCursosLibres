@@ -11,8 +11,7 @@
         </jsp:useBean>
         <jsp:useBean id="user" class="modelo.beans.Usuario" scope="session">
             <jsp:setProperty name="user" property="id_usuario" value="${user.id_usuario}"></jsp:setProperty>
-        </jsp:useBean>
-        
+        </jsp:useBean>        
         <%@ include file="header.jsp" %>
         <div id="wrapper">         
             <div id="contents">
@@ -30,9 +29,7 @@
                                     <button type="submit">Buscar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <!<!-- Verificar que el input de id no este vacio o que se haya seleccionado un grupo -->
                                     <button type="reset">Eliminar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="abrir_grupo.jsp">Abrir grupo</a>&nbsp;
                                     <a href="carga_asignada.jsp">Carga asignada de profesores</a>&nbsp;
-                                    <a href="area_tematica.jsp">Area tematica</a>
                                 </p>
                             </td>
                         </tr>
