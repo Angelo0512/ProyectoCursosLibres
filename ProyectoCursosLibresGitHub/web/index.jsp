@@ -2,6 +2,7 @@
 <%@page import="modelo.beans.ConjuntoCursos"%>
 <%@page import="modelo.beans.Curso"%>
 
+
 <html>
     <head>
         <title>Cursos Libres</title>

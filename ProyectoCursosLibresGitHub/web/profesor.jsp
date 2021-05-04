@@ -29,6 +29,8 @@
                                 <td colspan="2" class="botones">
                                     <p style="text-align: center;">
                                         <button type="submit">Buscar</button>&nbsp;
+                                        <button formaction="ingresoProfesor.jsp" type="submit">Ingresar Profesor</button>
+                                        &nbsp;
                                         
                                     </p>
                                 </td>

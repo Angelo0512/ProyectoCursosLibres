@@ -20,7 +20,13 @@
                     La clave para el usuario con identification: <%=usuario.getId_usuario()%> es: <%=usuario.getClave()%>
                 </p>
                 <p style="text-align: center;">
+                    <% if (estudiante != null) {%>
                     <a href="login.jsp">Iniciar sesión</a>
+                    <%}%>
+                    
+                    <% if (administrador != null) {%>
+                    <a href="profesor.jsp">Volver</a>
+                    <%}%> 
                 </p>
 
             </div>

@@ -14,7 +14,12 @@
                     Ocurrió un error al procesar los datos del formulario.
                 </p>
                 <p style="text-align: center;">
+                    <% if (estudiante != null) {%>
                     <a href="registro.jsp">Reintentar</a>
+                    <%}%>
+                    <% if (administrador != null) {%>
+                    <a href="ingresoProfesor.jsp">Reintentar</a>
+                    <%}%>
                 </p>
             </div>
             <footer></footer>

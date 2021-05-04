@@ -6,21 +6,97 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import modelo.beans.Area_tematica;
+import modelo.beans.ConjuntoAreasTematicas;
+import modelo.beans.ConjuntoEspecialidades;
+import modelo.beans.ConjuntoProfesores;
+import modelo.beans.ConjuntoUsuarios;
+import modelo.beans.Especialidad;
 import modelo.beans.Profesor;
+import modelo.beans.Usuario;
+import static modelo.beans.servicios.ServicioEstudiante.generacionClave;
 
 @WebServlet(name = "ServicioProfesor", urlPatterns = {"/ServicioProfesor"})
 public class ServicioProfesor extends HttpServlet {
 
+    Date date = new Date();
+    Timestamp ts = new Timestamp(date.getTime());
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
         System.out.println("Servlet ServicioProfesor..");
+        
+        try {
+            
+            HttpSession s = request.getSession(true);
+            Usuario u = new Usuario(
+                    request.getParameter("id"),
+                    2,
+                    String.valueOf(generacionClave()),
+                    ts,
+                    true
+            );
+
+            ConjuntoUsuarios usuarios = (ConjuntoUsuarios) getServletContext().getAttribute("usuarios");
+            usuarios.add(u);
+
+            Profesor e = new Profesor(
+                    Integer.parseInt(request.getParameter("id")),
+                    request.getParameter("id"),
+                    request.getParameter("apellido1"),
+                    request.getParameter("apellido2"),
+                    request.getParameter("nombre"),
+                    request.getParameter("telefono"),
+                    request.getParameter("email"));
+
+            ConjuntoProfesores profesores
+                    = (ConjuntoProfesores) getServletContext().getAttribute("profesores");
+            profesores.add(e);
+            
+            
+                        
+            int idArea = Integer.parseInt(request.getParameter("especialidad"));
+            int idProfesor = Integer.parseInt(request.getParameter("id"));
+            
+            Especialidad ep = new Especialidad(idProfesor,idArea);
+            
+            ConjuntoEspecialidades especialidades
+                    = (ConjuntoEspecialidades) getServletContext().getAttribute("especialidades");
+            especialidades.add(ep);
+            
+            
+            //Area_tematica area1 = areas.retrieve(request.getParameter("especialidad"));
+            
+            
+            /*Especialidad p = new Especialidad(
+                        Integer.parseInt(request.getParameter("id")),
+                        Integer.parseInt(request.getParameter("area")));
+            
+            ConjuntoAreasTematicas areas
+                    = (ConjuntoAreasTematicas) getServletContext().getAttribute("areas");
+            areas.add(p);*/
+            
+                   
+
+            s.setAttribute("generacionClave", u);
+            response.sendRedirect("visualizarClave.jsp");
+
+        } catch (IOException | NumberFormatException | SQLException ex) {
+            System.err.printf("Excepción: '%s'%n", ex.getMessage());
+            response.sendRedirect("error.jsp");
+        }
     }
 
     public Profesor obtenerProfesor(String id_usuario) {
