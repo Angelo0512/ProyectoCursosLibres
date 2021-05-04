@@ -9,8 +9,8 @@
     <body>
         <jsp:useBean id="cursos" class="modelo.beans.ConjuntoCursos" scope="application">
         </jsp:useBean>
-        <div id="wrapper">          
-            <%@ include file="header.jsp" %>        
+        <%@ include file="header.jsp" %>
+        <div id="wrapper">                  
             <div id="contents">
                 <form method="GET" action="ServicioBusquedaCurso">
                     <table class="busqueda">

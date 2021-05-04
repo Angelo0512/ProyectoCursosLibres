@@ -6,7 +6,6 @@ import cursolibres.db.dao.crud.AbstractCRUD;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import cursolibres.db.Database;
 import modelo.beans.servicios.CursoCRUD;
 
 public class CursoDAO extends AbstractDAO<Integer, Curso> {

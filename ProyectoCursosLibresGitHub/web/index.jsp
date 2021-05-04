@@ -14,8 +14,8 @@
         </jsp:useBean>
         <jsp:useBean id="cursoVer" class="modelo.beans.Curso" scope="application">            
         </jsp:useBean>
-        <div id="wrapper">
-            <%@ include file="header.jsp" %>
+        <%@ include file="header.jsp" %>
+        <div id="wrapper">            
             <div id="contents">
                 <form method="POST" action="ServicioBusquedaCurso">
                     <table class="busqueda">

@@ -34,6 +34,11 @@
                                     <input class="inputField" type="text" name="profesor_id" id="profesor_id" size="25" placeholder="(Id del profesor)" required/>
                                 </td>
                             </tr>
+                            <tr> 
+                                <td>
+                                    <a href="horario.jsp">Crear y ver horario</a>&nbsp;
+                                </td>
+                            </tr>
                             <tr>
                                 <td colspan="2" class="botones">
                                     <p style="text-align: center;">
