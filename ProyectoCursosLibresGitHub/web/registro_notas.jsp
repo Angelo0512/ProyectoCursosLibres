@@ -12,10 +12,8 @@
         </jsp:useBean>
         <jsp:useBean id="grupoRegistro" class="modelo.beans.Grupo" scope="application">            
         </jsp:useBean>
-        <div id="wrapper">
-            
-            <%@ include file="header.jsp" %>
-            
+        <%@ include file="header.jsp" %>
+        <div id="wrapper">           
             <div id="contents">
                 <form method="GET" action="ServicioRegistro">
                     <div class="estudiantescolumnas">

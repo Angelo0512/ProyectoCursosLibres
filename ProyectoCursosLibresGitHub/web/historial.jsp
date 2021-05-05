@@ -26,38 +26,41 @@
         <div id="wrapper">
             <%@include file="header.jsp" %>
             <div id="contents">
-                <table class="tablaHistorial">
-                    <caption> HISTORIAL </caption>
-                    <thead>
-                        <tr>
-                            <th>Id Curso</th>
-                            <th>Descripcion</th>
-                            <th>Numero Grupo</th>
-                            <th>Estado</th>
-                            <th>Nota</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <%for(Matricula matricula : matriculas.getListaMatriculaIdEstudiate(estudiante.getId_estudiante())){%>
-                        <tr>
-                            <td><%= matricula.getCurso_id()%></td>
-                            <td><%= cursos.retrieve(matricula.getCurso_id()).getDescripcion()%></td>
-                            <td><%= matricula.getGrupo_num()%></td>
-                            <td><%= estados.retrieve(matricula.getEstado_id()).getDescripcion()%></td>
-                            <td><%= matricula.getNota()%></td>
-                        </tr>
-                        <%}%>
-                        <tr>
-                            <td colspan="5">
-                                <input type="hidden" value="<% estudiante.getId_estudiante(); %>" name="idEst">
-                                <input type="submit" value="Descargar PDF">
-                            </td>
-                        </tr>
-                    </form>
-                    </tbody>
-                    <tfoot>
-                    </tfoot>
-                </table>
+                <form method="POST" action="ServicioHistorial">
+                    <table class="tablaHistorial">
+                        <caption> HISTORIAL </caption>
+                        <thead>
+                            <tr>
+                                <th>Id Curso</th>
+                                <th>Descripcion</th>
+                                <th>Numero Grupo</th>
+                                <th>Estado</th>
+                                <th>Nota</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <%for (Matricula matricula : matriculas.getListaMatriculaIdEstudiate(estudiante.getId_estudiante())) {%>
+                            <tr>
+                                <td><%= matricula.getCurso_id()%></td>
+                                <td><%= cursos.retrieve(matricula.getCurso_id()).getDescripcion()%></td>
+                                <td><%= matricula.getGrupo_num()%></td>
+                                <td><%= estados.retrieve(matricula.getEstado_id()).getDescripcion()%></td>
+                                <td><%= matricula.getNota()%></td>
+                            </tr>
+                            <%}%>
+                            <tr>
+                                <td colspan="5">
+                                    <input type="hidden" value="<% estudiante.getId_estudiante();%>" name="idEst">
+                                    <input type="submit" value="Descargar PDF">
+                                </td>
+                            </tr>                     
+
+                        </tbody>
+                        <tfoot>
+                        </tfoot>
+                    </table>
+                </form>
             </div>
         </div>
     </body>

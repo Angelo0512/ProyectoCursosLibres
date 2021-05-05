@@ -5,45 +5,76 @@
  */
 package modelo.beans.servicios;
 
+import com.itextpdf.io.font.FontConstants;
+import com.itextpdf.kernel.font.PdfFont;
+import com.itextpdf.kernel.font.PdfFontFactory;
+import com.itextpdf.kernel.geom.PageSize;
+import com.itextpdf.kernel.pdf.PdfDocument;
+import com.itextpdf.kernel.pdf.PdfWriter;
+import com.itextpdf.layout.Document;
+import com.itextpdf.layout.element.Cell;
+import com.itextpdf.layout.element.Paragraph;
+import com.itextpdf.layout.element.Table;
+import com.itextpdf.layout.property.TextAlignment;
 import java.io.IOException;
+import java.util.List;
+import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.swing.text.StyleConstants;
+import modelo.beans.ConjuntoMatricula;
+import modelo.beans.Matricula;
+import modelo.beans.Usuario;
 
 /**
  *
  * @author Angelo
  */
 public class ServicioHistorial extends HttpServlet {
-    
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/pdf");
         
-        /*PdfWriter writer = new PdfWriter(response.getOutputStream());
+        Usuario user2 = (Usuario) request.getSession(true).getAttribute("user");
+        ConjuntoMatricula matriculas = new ConjuntoMatricula();
+        List<Matricula> lista = matriculas.getListaMatriculaIdEstudiate(Integer.parseInt(user2.getId_usuario()));
+        
+        PdfWriter writer = new PdfWriter(response.getOutputStream());
         PdfDocument pdf = new PdfDocument(writer);
-        pdf.addNewPage();
-        Document document = new Document(pdf);
+        Document document = new Document(pdf, PageSize.A4.rotate());
+        document.setMargins(20, 20, 20, 20);
+                
+        Table table = new Table(new float[]{4,8,8,8,4});
+        table.setWidth(800);
+        document.add(new Paragraph("HISTORIAL").setTextAlignment(TextAlignment.CENTER));
         
-        
-        //Integer id = (Integer)request.getSession().getAttribute("idEst");
-        
-        String palabra = request.getParameter("contenido");
-        document.add(new Paragraph(palabra));
+        crearTabla(table, lista);        
+        document.add(table);     
         document.close();
-        //document.close();*/
+        
+        
     }
     
+    
+    void crearTabla(Table table, List<Matricula> lista){
+        table.addHeaderCell(new Cell().add(new Paragraph("Id estudiante")));
+        table.addHeaderCell(new Cell().add(new Paragraph("Id grupo")));
+        table.addHeaderCell(new Cell().add(new Paragraph("Id curso")));
+        table.addHeaderCell(new Cell().add(new Paragraph("Estado")));
+        table.addHeaderCell(new Cell().add(new Paragraph("Nota")));
+        
+        for (Matricula m : lista) {
+        table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getEstado_id()))));
+        table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getGrupo_num()))));
+        table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getCurso_id()))));
+        table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getEstado_id()))));
+        table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getNota()))));
+        }
+        
+    }
+    }
     
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

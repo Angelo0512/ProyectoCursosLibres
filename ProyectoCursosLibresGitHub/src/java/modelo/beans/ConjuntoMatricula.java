@@ -177,8 +177,8 @@ public class ConjuntoMatricula implements Serializable{
      
     public static String getTablaGrupos(ConjuntoMatricula instancia, String id_grupo) {
         return instancia.getTablaGrupos(Integer.parseInt(id_grupo));
-    }
-    
+    }    
+
     @XmlTransient
     private MatriculaDAO matriculas;
 }

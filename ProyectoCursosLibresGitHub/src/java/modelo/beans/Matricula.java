@@ -6,6 +6,7 @@
 package modelo.beans;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  *
@@ -98,7 +99,7 @@ public class Matricula implements Serializable{
         r.append("\t\t\t</tr>\n");
         return r.toString();
     }
-    
+
     private int estudiante_id;
     private int grupo_num;
     private int curso_id;
