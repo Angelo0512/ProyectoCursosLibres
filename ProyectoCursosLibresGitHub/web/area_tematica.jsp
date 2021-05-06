@@ -6,7 +6,6 @@
     </head>
     <body>
         <jsp:useBean id="areasTematicas" class="modelo.beans.ConjuntoAreasTematicas" scope="application">
-            <jsp:setProperty name="at" property="*"></jsp:setProperty> 
         </jsp:useBean>
         <div id="wrapper">   
             <%@ include file="header.jsp" %>          

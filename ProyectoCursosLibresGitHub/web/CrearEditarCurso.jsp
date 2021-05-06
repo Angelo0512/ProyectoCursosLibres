@@ -38,8 +38,8 @@
                                 <td colspan="2" class="botones">
                                     <p style="text-align: center;">
                                         <button type="submit">Agregar o editar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="area_tematica.jsp">Areas tematicas</a>&nbsp;
-                                        <a href="abrir_grupo.jsp">Abrir grupo</a>&nbsp;
+                                        <button formaction="area_tematica.jsp" type="submit">Areas tematicas</button>&nbsp;
+                                        <button formaction="abrir_grupo.jsp" type="submit">Abrir grupo</button>&nbsp;
                                     </p>
                                 </td>
                             </tr>

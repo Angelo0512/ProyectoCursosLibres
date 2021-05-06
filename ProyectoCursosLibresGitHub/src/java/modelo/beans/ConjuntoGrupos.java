@@ -179,6 +179,38 @@ public class ConjuntoGrupos implements Serializable {
     public static String getTablaCurso(ConjuntoGrupos instancia, String id) {
         return instancia.getTablaCurso(Integer.parseInt(id));
     }
+    
+      //muestra la tabla de grupos sin matriucla
+    
+    public String toStringHTMLSinMatricula() {
+        
+        StringBuilder r = new StringBuilder();
+        r.append("\t<table class=\"tablaGrupos\">\n");
+        r.append("\t\t<caption>GRUPOS</caption>");
+        r.append("\t\t<thead>\n");
+        r.append("\t\t\t<tr>\n");
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Numero Grupo"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Curso"));
+        r.append(String.format("\t\t\t\t<th>%s</th>\n", "Id Profesor"));
+        r.append("\t\t\t<tr>\n");
+        r.append("\t\t</thead>\n");
+
+        r.append("\t\t<tbody>\n");
+        List<Grupo> t = getListaGrupos();
+        for (Grupo c : t) {
+            r.append(c.toStringHTMLSinMatricula());
+        }
+        r.append("\t\t</tbody>\n");
+
+        r.append("\t\t<tfoot></tfoot>\n");
+        r.append("\t</table>\n");
+
+        return r.toString();
+    }
+    
+    public String getTablaSinMatricula() {
+        return toStringHTMLSinMatricula();
+    }
 
     
     @XmlTransient

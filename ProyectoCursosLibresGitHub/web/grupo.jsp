@@ -29,14 +29,23 @@
                                     <button type="submit">Buscar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <!<!-- Verificar que el input de id no este vacio o que se haya seleccionado un grupo -->
                                     <button type="reset">Eliminar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <a href="carga_asignada.jsp">Carga asignada de profesores</a>&nbsp;
                                 </p>
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <div class="d2columnas">                      
-                    ${grupo.tabla}
+                <div class="d2columnas"> 
+                    <%                            
+                           if (user.getRol_id() == 3){
+                        %>
+                        ${grupo.tabla}
+                            <%
+                        } else{
+                        %>
+                        ${grupo.tablaSinMatricula}
+                        <%
+                        }
+                        %>
                 </div>
             </div>
             <footer></footer>

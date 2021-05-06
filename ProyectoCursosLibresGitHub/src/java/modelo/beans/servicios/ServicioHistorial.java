@@ -5,9 +5,6 @@
  */
 package modelo.beans.servicios;
 
-import com.itextpdf.io.font.FontConstants;
-import com.itextpdf.kernel.font.PdfFont;
-import com.itextpdf.kernel.font.PdfFontFactory;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
@@ -18,12 +15,10 @@ import com.itextpdf.layout.element.Table;
 import com.itextpdf.layout.property.TextAlignment;
 import java.io.IOException;
 import java.util.List;
-import java.util.StringTokenizer;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.swing.text.StyleConstants;
 import modelo.beans.ConjuntoMatricula;
 import modelo.beans.Matricula;
 import modelo.beans.Usuario;
@@ -73,7 +68,7 @@ public class ServicioHistorial extends HttpServlet {
         
         
         for (Matricula m : lista) {
-        table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getEstado_id()))));
+        table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getEstudiante_id()))));
         table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getGrupo_num()))));
         table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getCurso_id()))));
         table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getEstado_id()))));

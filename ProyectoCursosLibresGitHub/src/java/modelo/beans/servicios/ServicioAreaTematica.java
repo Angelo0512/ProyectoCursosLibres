@@ -18,7 +18,7 @@ public class ServicioAreaTematica extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         System.out.println("Servlet ServicioAreaTematica...");
-
+        //Se crea el area tematica y se obtienen las variables
         try {
             Area_tematica area = new Area_tematica(
                     Integer.parseInt(request.getParameter("idArea")),

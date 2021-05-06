@@ -27,6 +27,7 @@ public class ServicioHorario extends HttpServlet {
         int hora = 0;
         int am_pm = 0;
 
+        //se obtienen todas las variables para los horarios
         id = Integer.parseInt(request.getParameter("seq"));
         idGrupo = Integer.parseInt(request.getParameter("grupo_num"));
         idCurso = Integer.parseInt(request.getParameter("grupo_curso_id"));

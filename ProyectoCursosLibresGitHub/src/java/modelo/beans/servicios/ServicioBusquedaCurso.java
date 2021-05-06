@@ -1,7 +1,6 @@
 package modelo.beans.servicios;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import static java.lang.System.out;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,7 +13,6 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import modelo.beans.ConjuntoCursos;
 import modelo.beans.Curso;
 
@@ -49,8 +47,9 @@ public class ServicioBusquedaCurso extends HttpServlet {
             
             
             for(int i=0;i<cursos.getListaCursos().size();i++){
-                if(nombre==cursos.getListaCursos().get(i).getDescripcion())
+                if(nombre.equals(cursos.getListaCursos().get(i).getDescripcion())){
                     cursoAux = cursos.getListaCursos().get(i);
+                }
             }
             
             //servicio.obtenerCursoNombre(nombre)

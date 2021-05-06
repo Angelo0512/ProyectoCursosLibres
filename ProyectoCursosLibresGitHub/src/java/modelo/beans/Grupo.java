@@ -98,6 +98,17 @@ public class Grupo implements Serializable {
         r.append("\t\t\t</tr>\n");
         return r.toString();
     }
+    
+    public String toStringHTMLSinMatricula() {
+        StringBuilder r = new StringBuilder();
+        r.append("\t\t\t<tr>\n");
+
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getNum_grupo()));
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getCurso_id()));
+        r.append(String.format("\t\t\t\t<td>%d</td>\n", getProfesor_id()));     
+        r.append("\t\t\t</tr>\n");
+        return r.toString();
+    }
 
     private int num_grupo;
     private int curso_id;

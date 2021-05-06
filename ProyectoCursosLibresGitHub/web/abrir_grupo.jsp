@@ -6,7 +6,6 @@
     </head>
     <body>
         <jsp:useBean id="grupos" class="modelo.beans.ConjuntoGrupos" scope="application">
-            <jsp:setProperty name="g" property="*"></jsp:setProperty> 
         </jsp:useBean>
         <div id="wrapper">
             <%@ include file="header.jsp" %>        
@@ -36,7 +35,7 @@
                             </tr>
                             <tr> 
                                 <td>
-                                    <a href="horario.jsp">Crear y ver horario</a>&nbsp;
+                                    <button formaction="horario.jsp" type="submit">Crear y ver horario</button>&nbsp;
                                 </td>
                             </tr>
                             <tr>

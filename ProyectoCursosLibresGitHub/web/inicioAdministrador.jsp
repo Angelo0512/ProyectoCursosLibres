@@ -32,7 +32,7 @@
                                 <td colspan="2" class="botones">
                                     <p style="text-align: center;">
                                         <button type="submit">Buscar</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        <a href="crearEditarCurso.jsp">Crear o editar un curso</a>&nbsp;
+                                        <button formaction="crearEditarCurso.jsp" type="submit">Crear o editar un curso</button>&nbsp;                                        
                                     </p>
                                 </td>
                             </tr>

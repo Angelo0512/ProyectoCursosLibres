@@ -2,6 +2,8 @@ package modelo.beans.servicios;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,36 +24,27 @@ public class ServicioAgregaEditaCurso extends HttpServlet {
         String descripcion = null;
         String tematica = null;
 
+        
+        //Se obtienen las variables
         id = request.getParameter("id_curso");
         descripcion = request.getParameter("descripcion");
         tematica = request.getParameter("tematica");
 
-        ConjuntoCursos cursos1 = (ConjuntoCursos) getServletContext().getAttribute("cursos");
+        ConjuntoCursos cursos = (ConjuntoCursos) getServletContext().getAttribute("cursos");
 
         Curso curso = null;
-        try {
-            curso = cursos1.retrieve(Integer.parseInt(id));
-        } catch (SQLException ex) {
-            //Logger.getLogger(ServicioAgregaEditaCurso.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
-        if (curso == null) {// el curso no existe
+        //primero se intenta insertar el curso, si da error es porque ya existe
+        try {
+            cursos.add(new Curso(Integer.parseInt(id), descripcion, Integer.parseInt(tematica)));
+        } catch (SQLException ex) {
+            //el curso existe, debe ser actualizado
+            curso = new Curso(Integer.parseInt(id), descripcion, Integer.parseInt(tematica));
             try {
-                cursos1.add(new Curso(Integer.parseInt(id), descripcion, Integer.parseInt(tematica)));
-            } catch (SQLException ex) {
+                cursos.update(Integer.parseInt(id), curso);
                 //Logger.getLogger(ServicioAgregaEditaCurso.class.getName()).log(Level.SEVERE, null, ex);   
-            }
-        } else {
-            // el curso existe, debe ser actualizado
-            ConjuntoCursos cursos2 = (ConjuntoCursos) getServletContext().getAttribute("cursos");
-            try {
-                curso.setDescripcion(descripcion);
-                curso.setArea_tematica_id(Integer.parseInt(tematica));
-                cursos2.update(Integer.parseInt(id), curso);
-            } catch (SQLException ex) {
-                System.out.println("error de:");
-                System.out.println(ex.getMessage());
-                //Logger.getLogger(ServicioAgregaEditaCurso.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (SQLException ex1) {
+                Logger.getLogger(ServicioAgregaEditaCurso.class.getName()).log(Level.SEVERE, null, ex1);
             }
         }
 

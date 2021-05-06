@@ -30,6 +30,7 @@
         <% if (profesor != null) {%>
         <li><a href="index.jsp">Cursos</a></li>
         <li><a href="grupo.jsp">Grupos</a></li>
+        <li><a href="carga_asignada.jsp">Carga asignada</a></li>
         <li style="float: right"> <a href="Logout">Salir</a></li>
         <li style="float: right"> <p style="color: white; font-size: 14px; margin-right: 10px;"><%=profesor.getNombre()%> <%=profesor.getApellido1()%> - <%=profesor.getUsuario_id()%></p></li>
             <% }%>
@@ -37,6 +38,11 @@
         <% if (estudiante == null && administrador == null && profesor == null) {%>
         <li><a href="registro.jsp">Registro</a></li>
         <li style="float: right"><a href="login.jsp">Iniciar Sesión</a></li>
-            <% }%>    
+        <li style="float: right">
+            <form method="POST" action="ServicioInicio">
+                <button type="submit">Crear usuario admin</button>
+            </form>   
+        </li>
+        <% }%>    
     </ul>
 </div>
