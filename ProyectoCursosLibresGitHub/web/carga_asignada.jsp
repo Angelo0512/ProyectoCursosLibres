@@ -13,8 +13,8 @@
         <jsp:useBean id="user" class="modelo.beans.Usuario" scope="session">
             <jsp:setProperty name="user" property="id_usuario" value="${user.id_usuario}"></jsp:setProperty>
         </jsp:useBean>
+        <%@ include file="header.jsp" %>     
         <div id="wrapper">
-            <%@ include file="header.jsp" %>            
             <div id="contents">                
                 <div class="d2columnas">
                     ${ej:getTablaCarga(cargas, user.id_usuario)}
