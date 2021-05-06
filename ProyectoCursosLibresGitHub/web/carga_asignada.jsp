@@ -18,6 +18,7 @@
             <div id="contents">                
                 <div class="d2columnas">
                     ${ej:getTablaCarga(cargas, user.id_usuario)}
+                    
                 </div>
             </div>
             <footer></footer>

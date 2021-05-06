@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="modelo.beans.ConjuntoCursos"%>
 <%@page import="modelo.beans.Curso"%>
@@ -14,8 +15,10 @@
         </jsp:useBean>
         <jsp:useBean id="cursoVer" class="modelo.beans.Curso" scope="application">            
         </jsp:useBean>
+        <jsp:useBean id="areas" class="modelo.beans.ConjuntoAreasTematicas" scope="application">            
+        </jsp:useBean>
         <%@ include file="header.jsp" %>
-        <div id="wrapper">            
+        <div id="wrapper">
             <div id="contents">
                 <form method="POST" action="ServicioBusquedaCurso">
                     <table class="busqueda">
@@ -43,15 +46,15 @@
                         </tbody>
                     </table>
                     <div class="d2columnas">
-
-                        <%
+                         <%
                             Curso c = (Curso) request.getAttribute("busquedaCurso");
-                            ArrayList<Curso> cc = (ArrayList<Curso>) request.getAttribute("busquedaCursoTematica");
+                            List<Curso> cc = (List<Curso>) request.getAttribute("busquedaCursoTematica");
+                            //out.print(c.getArea_tematica_id());
                             if (c != null) {
                         %>
-
+                        
                         <table class="tablaCursos">
-                            <caption> CURSOS </caption>
+                            <caption></caption>
                             <thead>
                                 <tr>
                                     <th>Id Curso</th>
@@ -64,8 +67,7 @@
                                 <%= c.toStringHTML()%>
                             </tbody>
                         </table>
-
-                        <%
+                            <%
                         } else if (cc != null) {
                         %>
 
@@ -86,16 +88,13 @@
                                     <td><%=curso.getDescripcion()%></td>
                                     <td><%=curso.getArea_tematica_id()%></td>
                                     <td>
-                                        <form action="" method="POST">
-                                            <button name="grupos" value="<%=curso.getId_curso()%>">Ver</button>
-                                        </form>
+                                    <button name="grupos" value="<%=curso.getId_curso()%>">Ver</button>
                                     </td>
                                 </tr>
                                 <%}%>
                             </tbody>
                         </table>
-
-                        <%
+                             <%
                         } else {
                             String descripcion = request.getParameter("descripcion");
                             if ((descripcion != null) && !descripcion.isEmpty()) {
@@ -128,8 +127,7 @@
                         %>
                     </div>
                 </form>
-            </div>
-            <footer></footer>
+            </div>  
         </div>
     </body>
 </html>

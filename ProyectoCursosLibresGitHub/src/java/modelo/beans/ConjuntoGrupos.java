@@ -146,6 +146,12 @@ public class ConjuntoGrupos implements Serializable {
         for (Grupo c : t) {
             if (c.getCurso_id()== curso_id){
                 r.append(c.toStringHTMLCarga());
+                r.append(String.format(
+                "\t\t\t\t<td><form method='%s' action='%s'><button name='grupoModificar' value='%d'>%s</button></form></td>\n",
+                "GET",
+                "ServicioRegistro",
+                c.getNum_grupo(),
+                "Modificar"));
             }
         }
         r.append("\t\t</tbody>\n");

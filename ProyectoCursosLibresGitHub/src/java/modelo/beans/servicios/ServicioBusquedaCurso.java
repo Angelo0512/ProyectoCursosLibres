@@ -2,7 +2,10 @@ package modelo.beans.servicios;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import static java.lang.System.out;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.RequestDispatcher;
@@ -37,11 +40,23 @@ public class ServicioBusquedaCurso extends HttpServlet {
             }
         }
         
-        
-        if (nombre != "" && nombre !=null) {
-            servicio.obtenerCursoNombre(nombre)
-                    .ifPresent(c -> request.setAttribute("busquedaCurso", c));
+        List<Curso> listAux = new ArrayList<>();
+        Curso cursoAux = null;
+        out.print("hola");
+            
+        if (!"".equals(nombre) && nombre !=null) {
+            //System.out.print("hola");
+            
+            
+            for(int i=0;i<cursos.getListaCursos().size();i++){
+                if(nombre==cursos.getListaCursos().get(i).getDescripcion())
+                    cursoAux = cursos.getListaCursos().get(i);
+            }
+            
+            //servicio.obtenerCursoNombre(nombre)
+                    //.ifPresent(c -> request.setAttribute("busquedaCurso", c));
         } else if (tematica != "" && tematica != null) {
+            listAux = servicio.obtenerListaCursosTematica(tematica);
             request.setAttribute("busquedaCursoTematica",servicio.obtenerListaCursosTematica(tematica));
         }
 
@@ -51,6 +66,9 @@ public class ServicioBusquedaCurso extends HttpServlet {
                             forward(request, response);
         }
             
+        request.setAttribute("busquedaCurso", cursoAux);
+        request.setAttribute("busquedaCursoTematica",listAux);
+        
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
 
