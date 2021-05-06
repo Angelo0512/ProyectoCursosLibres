@@ -28,6 +28,8 @@ import modelo.beans.ConjuntoMatricula;
 import modelo.beans.Matricula;
 import modelo.beans.Usuario;
 
+//Se usa iText7 para la creacion de los pdf
+
 /**
  *
  * @author Angelo
@@ -41,16 +43,18 @@ public class ServicioHistorial extends HttpServlet {
         ConjuntoMatricula matriculas = new ConjuntoMatricula();
         List<Matricula> lista = matriculas.getListaMatriculaIdEstudiate(Integer.parseInt(user2.getId_usuario()));
         
+        //Se empieza a crear el pdf
         PdfWriter writer = new PdfWriter(response.getOutputStream());
         PdfDocument pdf = new PdfDocument(writer);
         Document document = new Document(pdf, PageSize.A4.rotate());
         document.setMargins(20, 20, 20, 20);
-                
+        
+        //Se crea una tabla en el pdff
         Table table = new Table(new float[]{4,8,8,8,4});
         table.setWidth(800);
         document.add(new Paragraph("HISTORIAL").setTextAlignment(TextAlignment.CENTER));
         
-        crearTabla(table, lista);        
+        crearTabla(table, lista); //Con la tabla creada y la lista de matricula se crea la tabla        
         document.add(table);     
         document.close();
         
@@ -59,11 +63,14 @@ public class ServicioHistorial extends HttpServlet {
     
     
     void crearTabla(Table table, List<Matricula> lista){
+        
+        //Headers
         table.addHeaderCell(new Cell().add(new Paragraph("Id estudiante")));
         table.addHeaderCell(new Cell().add(new Paragraph("Id grupo")));
         table.addHeaderCell(new Cell().add(new Paragraph("Id curso")));
         table.addHeaderCell(new Cell().add(new Paragraph("Estado")));
         table.addHeaderCell(new Cell().add(new Paragraph("Nota")));
+        
         
         for (Matricula m : lista) {
         table.addCell(new Cell().add(new Paragraph(Integer.toString(m.getEstado_id()))));

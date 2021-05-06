@@ -4,6 +4,11 @@
     Author     : Angelo
 --%>
 
+<%--
+Un registro similar al de estudiantes
+La diferencia es que hay que indicar la especialidad
+--%>
+
 <%@page import="modelo.beans.Area_tematica"%>
 <%@page import="java.util.List"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -104,6 +109,9 @@
                                     </p>
                                 </td>
                                 <td>
+                                    <%--
+                                    Crea una lista desplegable de las areas tematicas en la base de datos
+                                    --%>
                                     <select size="1" name="especialidad">
                                     <%List<Area_tematica> list = areas.getListaAreasTematicas();
                                     for(int i=0; i < list.size(); i++){

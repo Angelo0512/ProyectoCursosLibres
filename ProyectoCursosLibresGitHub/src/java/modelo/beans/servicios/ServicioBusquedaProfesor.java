@@ -41,6 +41,10 @@ public class ServicioBusquedaProfesor extends HttpServlet {
         String id = request.getParameter("idProfesor");
         Profesor profesor = null;
 
+        //Si el profesor se obtiene un id que no sea nulo ni vacio entonces e
+        //La variable profesor se le acciona el profesor con ese id
+        //De otra manera el profesor sera nulo
+        
         if(!"".equals(id) && id !=null)
             profesor = servicio.obtenerProfesor(id);
         

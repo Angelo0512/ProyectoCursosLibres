@@ -6,6 +6,10 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+<%--
+Jsp creado para buscar profesores en especifico
+--%>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -28,8 +32,8 @@
                                 </td>
                                 <td colspan="2" class="botones">
                                     <p style="text-align: center;">
-                                        <button type="submit">Buscar</button>&nbsp;
-                                        <button formaction="ingresoProfesor.jsp" type="submit">Ingresar Profesor</button>
+                                        <button type="submit">Buscar</button>&nbsp; <%--Este boton manda el id y busca el profesor--%>
+                                        <button formaction="ingresoProfesor.jsp" type="submit">Ingresar Profesor</button> <%--Este boton redirecciona al jsp para ingresar profesores--%>
                                         &nbsp;
                                         
                                     </p>
@@ -44,7 +48,7 @@
                             
                             if(p != null){  
                         %>
-                        
+                        <%--Si se busco un profesor y el profesor existe despliega la informacion del mismo--%>
                        <table class="tablaProfesor">
                             <caption> PROFESORES </caption>
                             <thead>
@@ -59,13 +63,14 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <%--Si no existe ninguno profesor con el id la tabla saldra vacia--%>
                                 <% if(p.getId_profesor()!=0){%>
                                 <%= p.toStringHTML()%>
                                 <%}%>
                             </tbody>
                         </table>
                         
-                        
+                        <%--Si no se ingresa ningun dato saldra la tabla de todo los profesores en la base de datos--%>
                         <%
                             }else{       
                         %>

@@ -35,7 +35,8 @@ public class ServicioProfesor extends HttpServlet {
         System.out.println("Servlet ServicioProfesor..");
         
         try {
-            
+            //Antes de ingresar el profesor se ingresa a la base de datos el usuario
+            //que le corresponde
             HttpSession s = request.getSession(true);
             Usuario u = new Usuario(
                     request.getParameter("id"),
@@ -48,6 +49,9 @@ public class ServicioProfesor extends HttpServlet {
             ConjuntoUsuarios usuarios = (ConjuntoUsuarios) getServletContext().getAttribute("usuarios");
             usuarios.add(u);
 
+            //Creado y ingresado a la base de datos, se crea el profesor asignado
+            //al profesor para ingresarlo tambien a la base de datos
+            
             Profesor e = new Profesor(
                     Integer.parseInt(request.getParameter("id")),
                     request.getParameter("id"),
@@ -61,7 +65,8 @@ public class ServicioProfesor extends HttpServlet {
                     = (ConjuntoProfesores) getServletContext().getAttribute("profesores");
             profesores.add(e);
             
-            
+            //A partir de la area tematica selecciona se ingresan las especialidades
+            //del profesor a la base de datos
                         
             int idArea = Integer.parseInt(request.getParameter("especialidad"));
             int idProfesor = Integer.parseInt(request.getParameter("id"));
@@ -71,21 +76,8 @@ public class ServicioProfesor extends HttpServlet {
             ConjuntoEspecialidades especialidades
                     = (ConjuntoEspecialidades) getServletContext().getAttribute("especialidades");
             especialidades.add(ep);
-            
-            
-            //Area_tematica area1 = areas.retrieve(request.getParameter("especialidad"));
-            
-            
-            /*Especialidad p = new Especialidad(
-                        Integer.parseInt(request.getParameter("id")),
-                        Integer.parseInt(request.getParameter("area")));
-            
-            ConjuntoAreasTematicas areas
-                    = (ConjuntoAreasTematicas) getServletContext().getAttribute("areas");
-            areas.add(p);*/
-            
-                   
 
+            //Finalmente se asigna una contrasena al usuario
             s.setAttribute("generacionClave", u);
             response.sendRedirect("visualizarClave.jsp");
 
