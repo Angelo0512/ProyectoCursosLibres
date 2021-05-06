@@ -28,21 +28,31 @@ public class ServicioLogin extends HttpServlet {
                 break;
         }
     }
-
+    
+    //metodo por medio del cual se realizara el login de los usuarios
     protected void doLogin(HttpServletRequest request,
             HttpServletResponse response) throws ServletException, IOException {
         try {
             HttpSession s = request.getSession(true);
-
+            
+            //Primero se crea una session que sera utilizada para el manejo de los datos.
+            //se crean las variables que almacenan los datos provenientes del formulario
             String id_usuario = request.getParameter("id_usuario");
             String clave = request.getParameter("clave");
 
+            //se crea un usuario nuevo al que se le asigan dichos valos y que sera utilizado para realizar la comparacion de los datos con los valores existentes
+            //en la base de datos
             Usuario user = new Usuario();
             user.setId_usuario(id_usuario);
+            //primero se confirma por medio del metodo obtenerUsuario que el usuario que se ingreso exista en la base de datos, osea que este registrado
             user = servicioUs.obtenerUsuario(id_usuario);
 
+            //una vez se confirma que el usuario existe, se compara la clave ingresada con la clave actual para dicho usuario 
+            //y confirmar que los credenciales son correctos
             if (user.getClave().equals(clave)) {
 
+                //Una vez se confirma que los credenciales con correctos se compara el tipo de rol para realizar el inicio de sesion y mostrar solamente
+                //las opciones correspondientes a cada tipo de usuario
                 if (user.getRol_id() == 1) {
                     Administrador admin = new Administrador();
                     admin = servicioAdmin.obtenerAdministrador(id_usuario);

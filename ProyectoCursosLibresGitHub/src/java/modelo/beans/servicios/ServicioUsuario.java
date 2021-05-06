@@ -12,6 +12,7 @@ import modelo.beans.Usuario;
 
 public class ServicioUsuario extends HttpServlet {
 
+    //Metodo que luego de realizar la conexion con la base de datos se encarga de retornar el usuario que se esta buscando por medio de su numero de identificacion
     public Usuario obtenerUsuario(String id_usuario) throws
             ClassNotFoundException,
             IllegalAccessException,

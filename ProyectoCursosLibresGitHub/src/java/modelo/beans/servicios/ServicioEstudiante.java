@@ -31,6 +31,8 @@ public class ServicioEstudiante extends HttpServlet {
 
         System.out.println("Servlet ServicioEstudiante..");
 
+        //Metodo por medio del cual se realizar el registro de los estudiantes. Este inicia una session para luego crear primeramente un usuario que sera la base
+        //para la creacion del estudiante.
         try {
             
             HttpSession s = request.getSession(true);
@@ -44,7 +46,8 @@ public class ServicioEstudiante extends HttpServlet {
 
             ConjuntoUsuarios usuarios = (ConjuntoUsuarios) getServletContext().getAttribute("usuarios");
             usuarios.add(u);
-
+            
+            //Una vez se crea el usuario, comienza la creacion y asignacion de valores correspondientes al estudiante que se esta registrando
             Estudiante e = new Estudiante(
                     Integer.parseInt(request.getParameter("id")),
                     request.getParameter("id"),
@@ -54,11 +57,13 @@ public class ServicioEstudiante extends HttpServlet {
                     request.getParameter("telefono"),
                     request.getParameter("email"));
 
+            //se agrega el estudiante registrado al conjunto de estudiantes
             ConjuntoEstudiantes estudiantes
                     = (ConjuntoEstudiantes) getServletContext().getAttribute("estudiantes");
             estudiantes.add(e);
             System.out.println(estudiantes);
 
+            //redireccion a la pagina en que se mostrara la clave generada de manera aleatoria
             s.setAttribute("generacionClave", u);
             response.sendRedirect("visualizarClave.jsp");
 
@@ -68,6 +73,7 @@ public class ServicioEstudiante extends HttpServlet {
         }
     }
 
+    //metodo que se encarga de conectarse a la base de datos para retornar el estudiante al cual le corresponde el id utilizado en la busqueda
     public Estudiante obtenerEstudiante(String id_usuario) {
         Estudiante est = new Estudiante();
         try (Connection cnx = obtenerConexion();
@@ -95,6 +101,7 @@ public class ServicioEstudiante extends HttpServlet {
         return est;
     }
 
+    //Metodo para generar la clave dinamica
     public static int generacionClave() {
         return (int) (10000 * Math.random());
     }

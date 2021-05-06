@@ -14,6 +14,8 @@ import modelo.beans.Curso;
 
 public class ServicioCurso {
 
+    //Metodo que se encarga de realizar una busqueda en la base de datos para obtener el curso cuando la busqueda se hace por medio del nombre
+    //primero intenta contectar con la base de datos y si es exitosa este corre el query para obtener el dato correspondiente al curso
     public Optional<Curso> obtenerCursoNombre(String nombre) {
         Optional<Curso> r = Optional.empty();
         try (Connection cnx = obtenerConexion();
@@ -39,6 +41,8 @@ public class ServicioCurso {
         return r;
     }
 
+    //Metodo que se encarga de realizar una busqueda en la base de datos para obtener el curso cuando la busqueda se hace por medio de la tematica
+    //primero intenta contectar con la base de datos y si es exitosa este corre el query para obtener el dato correspondiente al curso
     public List<Curso> obtenerListaCursosTematica(String tematica) {
         List<Curso> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
@@ -65,6 +69,7 @@ public class ServicioCurso {
         return r;
     }
 
+    //Metodo que se al conectarse con la base de datos retorna la lista completa de los cursos existentes
     public List<Curso> obtenerListaCursos() {
         List<Curso> r = new ArrayList<>();
         try (Connection cnx = obtenerConexion();
