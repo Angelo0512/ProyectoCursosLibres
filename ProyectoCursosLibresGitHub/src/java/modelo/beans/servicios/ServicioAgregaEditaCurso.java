@@ -48,7 +48,7 @@ public class ServicioAgregaEditaCurso extends HttpServlet {
             }
         }
 
-        RequestDispatcher dispatcher = request.getRequestDispatcher("crearEditarCurso.jsp");
+        RequestDispatcher dispatcher = request.getRequestDispatcher("CrearEditarCurso.jsp");
         dispatcher.forward(request, response);
 
     }
